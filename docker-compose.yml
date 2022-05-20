@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: ./docker/python/Dockerfile
+    container_name: smartcare-api
+    tty: true
+    restart: unless-stopped
+    image: smartcareapi
+    working_dir: /app
+    volumes:
+      - ./smartcare_backend:/app
+    ports:
+      - "6969:5000"
+    networks:
+      - smartcare_network
+    environment:
+      FLASK_APP: ${FLASK_APP}
+      FLASK_RUN_HOST: ${FLASK_RUN_HOST}
+      FLASK_ENV: ${FLASK_ENV}
+    env_file:
+      - ./.env
+    command: ["flask", "run"]
+      
+networks:
+  smartcare_network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
