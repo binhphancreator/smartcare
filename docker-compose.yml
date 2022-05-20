@@ -22,7 +22,42 @@ services:
     env_file:
       - ./.env
     command: ["flask", "run"]
-      
+
+  react:
+    build: 
+      context: .
+      dockerfile: ./docker/react/Dockerfile
+    container_name: smartcare-react
+    tty: true
+    restart: unless-stopped
+    working_dir: /app
+    stdin_open: true
+    volumes:
+      - ./smartcare_frontend:/app
+    environment:
+      WDS_SOCKET_PORT: 0
+    env_file:
+      - ./.env
+    networks:
+      - smartcare_network
+    command: 
+      - "/bin/bash"
+      - "-c"
+      - "npm install && npm start"
+
+  nginx:
+    image: nginx:alpine
+    container_name: smartcare-nginx
+    restart: unless-stopped
+    ports:
+      - 6970:80
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d
+      - ./docker/logs/nginx:/var/log/nginx
+    networks:
+      - smartcare_network
+
 networks:
   smartcare_network:
     driver: bridge
