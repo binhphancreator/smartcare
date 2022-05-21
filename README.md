@@ -8,3 +8,4 @@
 ### Basic Information
 - To access python web api, access address http://localhost:6969
 - To access react web app, access address http://localhost:6970
+- To access mongo express, access address http://localhost:6971
