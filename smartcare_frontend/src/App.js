@@ -1,14 +1,17 @@
-import { Menu } from 'antd';
+import * as React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from './pages/Home'
+import NotFound from "./pages/NotFound";
 
-export default function App() {
+function App() {
   return (
-    <Menu
-        style={{ width: 256 }}
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
-        mode="inline">
-      <Menu.Item key="1">Option 1</Menu.Item>
-      <Menu.Item key="2">Option 2</Menu.Item>
-    </Menu>
-  )
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    </div>
+  );
 }
+
+export default App;
