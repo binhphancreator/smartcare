@@ -1,0 +1,166 @@
+header {
+  &.ant-layout-header {
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1400px;
+    height: auto;
+  }
+
+  .nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 0 1.5rem;
+    }
+
+    li a {
+      font-size: medium;
+      font-weight: bold;
+      color: $asbestos-400;
+    }
+
+    li.active a {
+      color: $primary_midnight_color;
+    }
+
+    li a:hover {
+      color: $logo_color;
+    }
+  }
+
+  .header-logo img {
+    object-fit: contain;
+    height: 2rem;
+  }
+
+  .link-login {
+    font-size: medium;
+    font-weight: 500;
+    color: white;
+    padding: 8px 40px;
+    border-radius: 10px;
+    background-color: $logo_color;
+    box-shadow: -1px 5px 20px 0px $belize-hole-200;
+    border: 2px solid $logo_color;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: transparent;
+      border: 2px solid $logo_color;
+      color: $primary_midnight_color;
+    }
+  }
+}
+
+header.header-intro {
+  position: relative;
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1400px;
+  padding: 0 50px;
+
+  [class$="overlay"] {
+    position: absolute;
+  }
+
+  .circle1-overlay {
+    width: 150px;
+    height: 150px;
+    border-radius: 9999px;
+    filter: blur(100px);
+    background-color: $belize-hole-600;
+    top: 50%;
+    left: 25%;
+  }
+
+  .circle2-overlay {
+    width: 125px;
+    height: 125px;
+    border-radius: 9999px;
+    filter: blur(60px);
+    background-color: $alizarin-600;
+    top: 10%;
+    right: 20%;
+  }
+
+  .svg-overlay {
+    width: 24rem;
+    top:0;
+    right: 30%;
+    z-index: -1;
+    svg {
+      fill: $belize-hole-100;
+      filter: blur(30px);
+    }
+  }
+
+  .header-intro-left{
+    width: 50%;
+  }
+
+  .header-intro-right {
+    width: 50%;
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  p{
+    line-height: normal;
+    color: $belize-hole-600;
+  }
+
+  p.intro-small {
+    text-transform: lowercase;
+    margin-bottom: .75rem;    
+  }
+
+  p.intro-big {
+    font-size: 3rem; /* 48px */
+    line-height: 1;
+    color: $primary_midnight_color;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  p.intro-long {
+    font-size: medium;
+    color: $asbestos-500;
+  }
+
+  .evaluate-btn {
+    font-size: medium;
+    font-weight: 500;
+    color: white;
+    padding: 8px 40px;
+    border-radius: 10px;
+    background-color: $belize-hole-600;
+    box-shadow: -1px 5px 20px 0px $belize-hole-200;
+    border: 2px solid $belize-hole-600;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: transparent;
+      border: 2px solid $belize-hole-600;
+      color: $belize-hole-600;
+    }
+  }
+
+}
