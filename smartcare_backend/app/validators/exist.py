@@ -1,7 +1,7 @@
 import mongoengine
 from wtforms import ValidationError
 
-class Unique(object):
+class Exist(object):
   def __init__(self, model: mongoengine.Document, namefield: str):
     self.model = model
     self.namefield = namefield
@@ -11,7 +11,7 @@ class Unique(object):
       self.namefield: field.data
     }
     entity = self.model.objects(**kwargs).first()
-    if entity != None:
-      raise ValidationError(f"The {self.namefield} has already been taken") 
+    if entity is None:
+      raise ValidationError(f"The {self.namefield} field is not exist") 
 
-unique = Unique
+exist = Exist

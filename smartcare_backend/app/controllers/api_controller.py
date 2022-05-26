@@ -1,4 +1,6 @@
-def respondErrorValidate(errors, data = None, message = None, status = 422):
+from flask import jsonify
+
+def respondError(errors, data = None, message = None, status = 422):
   if message == None:
     message = "%i" % status
   response = {
@@ -7,7 +9,7 @@ def respondErrorValidate(errors, data = None, message = None, status = 422):
     "message": message,
     "status": status
   }
-  return response, status
+  return jsonify(response), status
 
 
 def respondSuccess(data, message = None, status = 200):
@@ -18,4 +20,4 @@ def respondSuccess(data, message = None, status = 200):
     "message": message,
     "status": status
   }
-  return response, status
+  return jsonify(response), status
