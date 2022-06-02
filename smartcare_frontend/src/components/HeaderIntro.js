@@ -1,5 +1,5 @@
-import {Layout} from 'antd'
-import {Link} from 'react-router-dom'
+import { Layout } from 'antd'
+import { Link } from 'react-router-dom'
 
 export default function HeaderIntro() {
   return (
