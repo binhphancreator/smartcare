@@ -14,6 +14,8 @@ export default function AboutUs() {
           <p className="intro-group">Thực hành chuyên sâu</p>
         </div>
 
+        
+
       </div>
 
       <p className="intro-group">Danh sách thành viên</p>
