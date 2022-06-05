@@ -18,19 +18,19 @@ def createBlog():
         description=request.form["description"]
     )
     blog.save()
-    return blog.to_json()
+    return respondSuccess(str(blog.id) + " created successfully", status=201)
 
 
 @api.route('/blogs', methods=['GET'])
 def getAllBlogs():
     blog = Blog.objects()
-    return jsonify(blog)
+    return respondSuccess(data=blog)
 
 
 @api.route('/blogs/<id>', methods=['GET'])
 def getOneBlog(id):
     blog = Blog.objects.get(id=id)
-    return jsonify(blog)
+    return respondSuccess(data=blog)
 
 
 @api.route('/blogs', methods=['PUT'])
@@ -43,8 +43,8 @@ def updateBlog():
         text=request.form["text"],
         imageUrl=request.form["imageUrl"],
         description=request.form["description"],
-        createDate=blog.createDate,
-        modifyDate=datetime.datetime.now()
+        created_at=blog.created_at,
+        modified_at=datetime.datetime.now()
     )
     blog.delete()
     blog_new.save()
