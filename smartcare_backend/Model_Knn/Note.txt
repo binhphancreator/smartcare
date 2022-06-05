@@ -1,0 +1,9 @@
+lib:
+- numpy
+- pandas
+- sklearn
+- pickle
+
+To run predicton
+- import Knn_model as knn
+- call knn.makePrediction(model_link, features)
