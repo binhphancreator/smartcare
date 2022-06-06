@@ -1,14 +1,13 @@
-import {Layout} from 'antd'
-import Header from '../components/Header'
-import HeaderIntro from '../components/HeaderIntro'
-const {Content} = Layout
+import { Layout } from "antd";
+import Header from "../components/Header";
+import HeaderIntro from "../components/HeaderIntro";
+const { Content } = Layout;
 
 export default function DefaultLayout(props) {
-  return(
+  return (
     <>
       <Header />
-      <HeaderIntro></HeaderIntro>
       <Content>{props.children}</Content>
     </>
-  )
+  );
 }
