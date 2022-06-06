@@ -1,0 +1,44 @@
+.product-intro {
+
+    .header_Product {
+        
+    }
+
+    .content_Product {
+        text-align: center;
+
+        .big-title h1 {
+            font-size: 50px;
+            font-weight: bold;
+            padding-top: 60px;
+            padding-bottom: 60px;
+
+
+
+        }
+
+        .item_intro {
+            display: flex;
+            justify-content: space-evenly;
+
+            .card_title {
+                border-radius: 10px;
+                margin-bottom: 100px;
+                box-shadow: -1px 5px 20px 0px $belize-hole-200;
+
+               .data{
+                   color:rgb(3, 45, 133);
+                   font-size:large;
+                   
+                }
+                &:hover{
+                   
+                    box-shadow: 5px 10px 20px 10px $belize-hole-200;
+                }
+               }
+        }
+    }
+
+}
+
+

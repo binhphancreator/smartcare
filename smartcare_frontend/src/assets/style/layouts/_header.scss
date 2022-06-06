@@ -44,6 +44,24 @@ header {
   }
 
   .link-login {
+    margin-right: 20px;
+    font-size: medium;
+    font-weight: 500;
+    color: white;
+    padding: 8px 40px;
+    border-radius: 10px;
+    background-color: $logo_color;
+    box-shadow: -1px 5px 20px 0px $belize-hole-200;
+    border: 2px solid $logo_color;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: transparent;
+      border: 2px solid $logo_color;
+      color: $primary_midnight_color;
+    }
+  }
+  .link-register {
     font-size: medium;
     font-weight: 500;
     color: white;

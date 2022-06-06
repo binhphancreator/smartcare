@@ -1,0 +1,51 @@
+div {
+    .background {
+     
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('../../images/bacsi.jpg');
+
+        .form {
+            width: 800px;
+            height: 300px;
+
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+
+            .main_left {
+                width: 400px;
+
+                .card {
+                    border: 1px solid rgba(108, 186, 255, 0.5);
+                    border-width: 5px;
+                    border-style:groove;
+                    border-radius:15px;
+                    display: flex;
+                    justify-content: center;
+                    .login-btn{
+                      margin-left: 75px;
+                      font-size: medium;
+                      font-weight: 500;
+                      color: white;
+                      padding: 8px 40px;
+                      border-radius: 10px;
+                      background-color: $logo_color;
+                      box-shadow: -1px 5px 20px 0px $belize-hole-200;
+                      border: 2px solid $logo_color;
+                      text-transform: uppercase;
+                      &:hover {
+                        background-color: transparent;
+                        border: 2px solid $logo_color;
+                        color: $primary_midnight_color;
+                      }
+                    }
+
+                }
+            }
+        }
+
+    }
+}
