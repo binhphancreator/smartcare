@@ -15,8 +15,10 @@ accuracy = 0.0
 
 def PrepareDataset(dataset, isForDoctor):
     if isForDoctor:
-        X = dataset.iloc[:, 0:11].values
+        X = dataset.iloc[:, 0:12].values
+        #print(np.shape(X))
         y = dataset.iloc[:, 12].values
+        #print(y)
         return X, y
     else :
         X = dataset.iloc[:, 1:18].values
@@ -28,7 +30,7 @@ def BuidlKNN(datasetPath, outputModel, isForDoctor):
     # Importing the dataset
     dataset = pd.read_csv(datasetPath)
     X, y = PrepareDataset(dataset, isForDoctor)
-
+    
     # # Transform text value to number
     # le = LabelEncoder()
 
@@ -72,14 +74,19 @@ def getComfusionMatrix():
 def getAccuracy():
     return accuracy
 
-def makePrediction(model_link, features):
+def makePrediction(model_link, features, isForDoctor):
 
     print(model_link, features)
 
     model = pickle.load(open(model_link, 'rb'))
-    features = np.reshape(features, (-1, 17))
+    
+    if isForDoctor:
+        features = np.reshape(features, (-1, 12))
+    else:    
+        features = np.reshape(features, (-1, 17))
+    
     print("feature reshaped ", features)
     result = model.predict(features)
-    return result[0]
+    return  result[0]
     
 
