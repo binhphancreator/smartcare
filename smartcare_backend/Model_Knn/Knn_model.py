@@ -13,12 +13,21 @@ import pickle
 confusionMatrix = [[0.0 , 0.0], [0.0 , 0.0]]
 accuracy = 0.0
 
-def BuidlKNN(datasetPath, outputModel):
+def PrepareDataset(dataset, isForDoctor):
+    if isForDoctor:
+        X = dataset.iloc[:, 0:11].values
+        y = dataset.iloc[:, 12].values
+        return X, y
+    else :
+        X = dataset.iloc[:, 1:18].values
+        y = dataset.iloc[:, 0].values
+        return X, y
+
+def BuidlKNN(datasetPath, outputModel, isForDoctor):
 
     # Importing the dataset
     dataset = pd.read_csv(datasetPath)
-    X = dataset.iloc[:, 1:18].values
-    y = dataset.iloc[:, 0].values
+    X, y = PrepareDataset(dataset, isForDoctor)
 
     # # Transform text value to number
     # le = LabelEncoder()
