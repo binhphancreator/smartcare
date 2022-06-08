@@ -1,20 +1,16 @@
-.dashboard{
-    display: flex;
-    justify-content:center;
-    .form{  
-        width: 100%;
-        
-        .form_select{
-            box-shadow: -1px 5px 20px 0px $belize-hole-200;
-            border-radius: 10px;
-            border: 1px solid $belize-hole-200
-       }
-       .submit{
-             text-align: center;
-       
-       }
+.dashboard {
+  display: flex;
+  justify-content: center;
+  .form {
+    width: 100%;
 
+    .form_select {
+      box-shadow: -1px 5px 20px 0px $belize-hole-200;
+      border-radius: 10px;
+      border: 1px solid $belize-hole-200;
     }
-   
-   
+    .submit {
+      text-align: center;
+    }
+  }
 }

@@ -14,9 +14,7 @@ export default function Register() {
             <Form.Item
               label="Tên người dùng"
               name="username"
-              rules={[
-                { required: true, message: "Username is required" },
-              ]}
+              rules={[{ required: true, message: "Username is required" }]}
               style={{ marginBottom: 15 }}
             >
               <Input

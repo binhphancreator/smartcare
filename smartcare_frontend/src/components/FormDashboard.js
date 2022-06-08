@@ -1,15 +1,10 @@
 import React from "react";
 import {
   Button,
-  Cascader,
-  DatePicker,
   Form,
-  Input,
   InputNumber,
   Radio,
   Select,
-  Switch,
-  TreeSelect,
 } from "antd";
 
 export default function FormDashboard() {
@@ -96,7 +91,7 @@ export default function FormDashboard() {
           </Form.Item>
           <Form.Item label="Sắc tộc của bạn là gì?" className="form_select">
             <Select>
-              <Select.Option value={0}>Anh-Điêng </Select.Option>  
+              <Select.Option value={0}>Anh-Điêng </Select.Option>
               <Select.Option value={1}>Châu Á </Select.Option>
               <Select.Option value={2}>Châu Phi </Select.Option>
               <Select.Option value={3}>gốc Tây Ban Nha </Select.Option>
