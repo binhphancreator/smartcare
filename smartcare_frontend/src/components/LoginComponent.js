@@ -1,16 +1,12 @@
 import React from "react";
 import {
   Row,
-  Divider,
-  Layout,
   Button,
-  PageHeader,
   Col,
   Card,
   Form,
   Input,
 } from "antd";
-import { VideoCameraFilled, GithubOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 export default function LoginComponent() {
