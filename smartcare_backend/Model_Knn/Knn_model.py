@@ -43,7 +43,7 @@ def BuidlKNN(datasetPath, outputModel, isForDoctor):
     # Splitting the dataset into the Training set and Test set
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 0)
 
-    # Feature Scaling
+    #Feature Scaling
     sc = StandardScaler()
     X_train = sc.fit_transform(X_train)
     X_test = sc.transform(X_test)
@@ -86,7 +86,7 @@ def makePrediction(model_link, features, isForDoctor):
         features = np.reshape(features, (-1, 17))
     
     print("feature reshaped ", features)
-    result = model.predict(features)
+    result = model.predict_proba(features)
     return  result[0]
     
 
