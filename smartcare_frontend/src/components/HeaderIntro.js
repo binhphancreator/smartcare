@@ -12,7 +12,7 @@ export default function HeaderIntro() {
           Smartcare hi vọng rằng có thể bảo vệ được mọi người từ việc cảnh báo
           những nguy cơ hàng ngày mà bạn có thể mắc phải.
         </p>
-        <Link className="evaluate-btn" to="/evaluate">
+        <Link className="evaluate-btn" to="/dashboard">
           Dự đoán ngay
         </Link>
       </div>
