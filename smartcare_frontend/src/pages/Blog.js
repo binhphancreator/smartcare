@@ -12,7 +12,7 @@ export default function Blog() {
         <Row gutter={[32, 32]}>
           {api_blog.map(item =>
             <Col span={8}>
-              <BlogCard image={imgSrc} title={item.title} content={item.content} />
+              <BlogCard id={item.id} image={imgSrc} title={item.title} content={item.content} />
             </Col>
           )}
         </Row>
