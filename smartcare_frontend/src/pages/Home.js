@@ -8,8 +8,8 @@ function Home() {
     <>
       <DefaultLayout>
         <HeaderIntro />
-        <AboutUsComponent />
         <ProductIntro />
+        <AboutUsComponent />
       </DefaultLayout>
     </>
   );

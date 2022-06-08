@@ -19,7 +19,7 @@ export default function Header() {
             <Link to="/">Trang chủ</Link>
           </li>
           <li>
-            <Link to="/">Tin tức</Link>
+            <Link to="/blog">Tin tức</Link>
           </li>
           <li>
             <Link to="/">Trợ giúp & Hỏi đáp</Link>
