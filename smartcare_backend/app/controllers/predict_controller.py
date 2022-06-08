@@ -28,7 +28,7 @@ features = []
 
 
 @api.route('/predict', methods=['POST'])
-def cancerPredict():
+def cancerPredictBasic():
     for i in fields:
         if request.form[i] == None:
             return respondError("Missing field " + i, message="Missing field " + i, status=401)
@@ -40,5 +40,5 @@ def cancerPredict():
 
     print(features)
     result = knn.makePrediction(
-        base_path + "/Model_Knn/MODEL_KNN.sav", features)
+        base_path + "/Model_Knn/MODEL_KNN.sav", features, False)
     return respondSuccess(float(result[0]), status=200)

@@ -7,3 +7,6 @@ lib:
 To run predicton
 - import Knn_model as knn
 - call knn.makePrediction(model_link, features)
+
+
+features = [30.23,1,0,0,6,2,1,0,11,5,1,1,1,8,0,1,0]
