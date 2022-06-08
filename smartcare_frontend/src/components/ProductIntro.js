@@ -1,15 +1,13 @@
 import React from "react";
 import { Card } from "antd";
-import { Link } from "react-router-dom";
-
-import Icon, { FundTwoTone, MedicineBoxTwoTone } from "@ant-design/icons";
+import { FundTwoTone } from "@ant-design/icons";
 
 import image from "../assets/images/bacsi.jpg";
 export default function ProductIntro() {
   return (
     <div className="product-intro">
       <div className="header_Product">
-        <img src={image} />
+        <img src={image} alt="" />
       </div>
       <div className="content_Product">
         <div className="big-title">

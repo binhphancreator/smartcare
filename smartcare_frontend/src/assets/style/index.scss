@@ -1,9 +1,7 @@
-@import 'base/base';
-@import './vendors/vendors';
-@import 'layouts/layouts';
+@import "base/base";
+@import "./vendors/vendors";
+@import "layouts/layouts";
 
-@import'login/loginlayout.scss';
-@import'productIntro/productIntro.scss';
-@import'AboutUs/aboutUs.scss'
-
-
+@import "login/loginlayout.scss";
+@import "productIntro/productIntro.scss";
+@import "AboutUs/aboutUs.scss";

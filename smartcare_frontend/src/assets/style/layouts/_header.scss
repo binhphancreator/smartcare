@@ -12,7 +12,7 @@ header {
     height: auto;
   }
 
-  .nav ul{
+  .nav ul {
     display: flex;
     align-items: center;
     list-style: none;
@@ -119,7 +119,7 @@ header.header-intro {
 
   .svg-overlay {
     width: 24rem;
-    top:0;
+    top: 0;
     right: 30%;
     z-index: -1;
     svg {
@@ -128,7 +128,7 @@ header.header-intro {
     }
   }
 
-  .header-intro-left{
+  .header-intro-left {
     width: 50%;
   }
 
@@ -140,14 +140,14 @@ header.header-intro {
     }
   }
 
-  p{
+  p {
     line-height: normal;
     color: $belize-hole-600;
   }
 
   p.intro-small {
     text-transform: lowercase;
-    margin-bottom: .75rem;    
+    margin-bottom: 0.75rem;
   }
 
   p.intro-big {
@@ -180,5 +180,4 @@ header.header-intro {
       color: $belize-hole-600;
     }
   }
-
 }
