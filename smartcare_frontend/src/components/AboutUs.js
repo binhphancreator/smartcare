@@ -4,7 +4,7 @@ import AboutUsCard from "./Card/AboutUsCard";
 
 export default function AboutUsComponent() {
   return (
-    <div>
+    <div className="container">
       <div className="overview-people">
         <img className="image" src={image} style={{ width: "50%" }} alt="" />
         <div className="text-people">
