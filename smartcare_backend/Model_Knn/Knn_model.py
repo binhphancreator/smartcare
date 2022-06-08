@@ -9,28 +9,29 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 import pickle
 
 
-
-confusionMatrix = [[0.0 , 0.0], [0.0 , 0.0]]
+confusionMatrix = [[0.0, 0.0], [0.0, 0.0]]
 accuracy = 0.0
+
 
 def PrepareDataset(dataset, isForDoctor):
     if isForDoctor:
         X = dataset.iloc[:, 0:12].values
-        #print(np.shape(X))
+        # print(np.shape(X))
         y = dataset.iloc[:, 12].values
-        #print(y)
+        # print(y)
         return X, y
-    else :
+    else:
         X = dataset.iloc[:, 1:18].values
         y = dataset.iloc[:, 0].values
         return X, y
+
 
 def BuidlKNN(datasetPath, outputModel, isForDoctor):
 
     # Importing the dataset
     dataset = pd.read_csv(datasetPath)
     X, y = PrepareDataset(dataset, isForDoctor)
-    
+
     # # Transform text value to number
     # le = LabelEncoder()
 
@@ -41,15 +42,16 @@ def BuidlKNN(datasetPath, outputModel, isForDoctor):
     # y = le.fit_transform(y)
 
     # Splitting the dataset into the Training set and Test set
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 0)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.20, random_state=0)
 
-    #Feature Scaling
+    # Feature Scaling
     sc = StandardScaler()
     X_train = sc.fit_transform(X_train)
     X_test = sc.transform(X_test)
 
     # Training the K-NN model on the Training set
-    classifier = KNeighborsClassifier(n_neighbors = 5, metric = 'minkowski', p = 2)
+    classifier = KNeighborsClassifier(n_neighbors=5, metric='minkowski', p=2)
     classifier.fit(X_train, y_train)
 
     # Predicting the Test set results
@@ -62,31 +64,32 @@ def BuidlKNN(datasetPath, outputModel, isForDoctor):
     confusionMatrix = cm
     accuracy = ac
 
-    print("Confusion matrix : \n",cm)
-    print("Accuarcy : " , ac)
+    print("Confusion matrix : \n", cm)
+    print("Accuarcy : ", ac)
 
     # save the model to disk
     pickle.dump(classifier, open(outputModel, 'wb'))
- 
+
+
 def getComfusionMatrix():
     return confusionMatrix
 
+
 def getAccuracy():
     return accuracy
+
 
 def makePrediction(model_link, features, isForDoctor):
 
     print(model_link, features)
 
     model = pickle.load(open(model_link, 'rb'))
-    
+
     if isForDoctor:
         features = np.reshape(features, (-1, 12))
-    else:    
+    else:
         features = np.reshape(features, (-1, 17))
-    
+
     print("feature reshaped ", features)
     result = model.predict_proba(features)
-    return  result[0]
-    
-
+    return result[0]
