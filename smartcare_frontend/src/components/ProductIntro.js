@@ -13,9 +13,21 @@ export default function ProductIntro() {
           <h1> GIỚI THIỆU ỨNG DỤNG</h1>
         </div>
         <div className="item_intro">
-          <ProductIntroCard title={"Dự đoán bệnh"} description={"Nhanh chóng"} description2={"Chính xác"} />
-          <ProductIntroCard title={"Thông tin y khoa"} description={"Cập nhật"} description2={"Thân thiện"} />
-          <ProductIntroCard title={"Trợ giúp"} description={"Chính xác"} description2={"Hiệu quả"} />
+          <ProductIntroCard
+            title={"Dự đoán bệnh"}
+            description={"Nhanh chóng"}
+            description2={"Chính xác"}
+          />
+          <ProductIntroCard
+            title={"Thông tin y khoa"}
+            description={"Cập nhật"}
+            description2={"Thân thiện"}
+          />
+          <ProductIntroCard
+            title={"Trợ giúp"}
+            description={"Chính xác"}
+            description2={"Hiệu quả"}
+          />
         </div>
       </div>
     </div>

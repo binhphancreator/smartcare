@@ -5,9 +5,9 @@ export default function Dashboard() {
   return (
     <div>
       <DefaultLayout>
-      <FormDashboard/>
+        <FormDashboard />
       </DefaultLayout>
-      
+
     </div>
   );
 }
