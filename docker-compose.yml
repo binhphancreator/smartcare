@@ -42,10 +42,6 @@ services:
       - ./.env
     networks:
       - smartcare_network
-    command: 
-      - "/bin/bash"
-      - "-c"
-      - "npm install && npm start"
 
   nginx:
     image: nginx:alpine
