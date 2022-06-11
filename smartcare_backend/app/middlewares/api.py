@@ -4,6 +4,7 @@ from functools import wraps
 from wtforms import Form
 from app.controllers.api_controller import respondError
 from enum import Enum
+from multidict import MultiDict
 
 class INPUT_POSITION(Enum):
   HEADER = 1
@@ -12,8 +13,9 @@ class INPUT_POSITION(Enum):
   FORM_MULTIPART = 4
   JSON = 5
   FORM_QUERY = 6
+  ALL = 7
 
-def api(FormRequest: Form = None, typeinput: INPUT_POSITION = INPUT_POSITION.FORM):
+def api(FormRequest: Form = None, typeinput: INPUT_POSITION = INPUT_POSITION.ALL):
   def wrapper(controller):
     @wraps(controller)
     def decorated(*args, **kwargs):
@@ -34,9 +36,12 @@ def findInput(typeinput: INPUT_POSITION):
   elif typeinput == INPUT_POSITION.FORM:
     input = request.form
   elif typeinput == INPUT_POSITION.FORM_MULTIPART:
-    input = {**request.form, **request.files}
+    input = MultiDict(**request.form, **request.files)
   elif typeinput == INPUT_POSITION.JSON:
     input = request.json
   elif typeinput == INPUT_POSITION.FORM_QUERY:
     input = request.values
+  elif typeinput == INPUT_POSITION.ALL:
+    json = request.json if request.is_json else {}
+    input = MultiDict(**request.values, **request.files, **json)
   return input
