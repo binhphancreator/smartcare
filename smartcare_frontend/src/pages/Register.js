@@ -1,23 +1,24 @@
 import React from "react";
 import AuthLayout from "../layouts/AuthLayout";
 import { Row, Button, Col, Card, Form, Input } from "antd";
-import axios from '../global/axios'
-import { useNavigate } from 'react-router-dom'
+import axios from "../global/axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Register(props) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function postRegister(data) {
-    var formData = new FormData()
-    for(let name in data)
-      formData.append(name, data[name])
+    var formData = new FormData();
+    for (let name in data) formData.append(name, data[name]);
 
-    axios.post('/register', formData)
-      .then(response => {
-        navigate('/login')
-      }).catch(error => {
-        console.log(error)
+    axios
+      .post("/register", formData)
+      .then((response) => {
+        navigate("/login");
       })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -62,9 +63,7 @@ export default function Register(props) {
             <Form.Item
               label="Mật khẩu"
               name="password"
-              rules={[
-                { required: true, message: "Password is required" },
-              ]}
+              rules={[{ required: true, message: "Password is required" }]}
               style={{ marginBottom: 15 }}
             >
               <Input.Password shape="round" name="password" />
@@ -88,7 +87,8 @@ export default function Register(props) {
                   },
                 }),
               ]}
-              style={{ marginBottom: 15 }}>
+              style={{ marginBottom: 15 }}
+            >
               <Input.Password shape="round" name="password_confirm" />
             </Form.Item>
 
