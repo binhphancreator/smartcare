@@ -1,9 +1,13 @@
 import React from "react";
-import FormDashboard from "../components/FormDashboard";
+import FormDashboard from "../components/FormDashboard"
+import DefaultLayout from "../layouts/DefaultLayout"
 export default function Dashboard() {
   return (
     <div>
-      <FormDashboard />
+      <DefaultLayout>
+        <FormDashboard />
+      </DefaultLayout>
+
     </div>
   );
 }

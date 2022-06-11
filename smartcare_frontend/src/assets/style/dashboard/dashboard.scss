@@ -1,8 +1,32 @@
 .dashboard {
   display: flex;
   justify-content: center;
+  background-color: #bbf5ff;
+  .form_intro {
+    padding-top: 40px;
+    text-align: center;
+    font-weight: 900;
+    font-size: xx-large;
+  }
   .form {
     width: 100%;
+
+    .form_select {
+      background-color: white;
+      height: 100px;
+      font-weight: 500;
+      border-radius: 10px;
+      border: 1px solid $belize-hole-200;
+
+      .form_select_chirlden {
+        margin-top: -8px;
+        padding-left: 20px;
+        top: 1px;
+      }
+    }
+    .submit {
+      text-align: center;
+    }
 
     .form_select {
       box-shadow: -1px 5px 20px 0px $belize-hole-200;
