@@ -15,16 +15,23 @@ function Collapse(props) {
 
   return ( <>
     <div className='collapse' onClick={toggleCollapse}>
-      {
-        props.icon &&
-        <button className="collapse-icon">
-          {props.icon}
-        </button>
-      }
 
       <div className='collapse-content'>
-        <div className='collapse-title'>{props.title}</div>
-        <div className="collapse-body" ref={collapseRef} style={{height: show ? height : 0}}>{props.body}</div>
+        <button className="collapse-icon">
+          {props.icon ? 
+            props.icon
+            :
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+            </svg>
+          }
+        </button>
+
+        <div>
+          <div className='collapse-title'>{props.title}</div>
+          <div className="collapse-body" ref={collapseRef} style={{height: show ? height : 0}}>{props.body}</div>
+        </div>
+
       </div>
 
       <button className="btn-collapse" style={{transform: !show ? "rotate(180deg)" : "none"}}>

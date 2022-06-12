@@ -1,0 +1,59 @@
+.footer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: rgb(241 245 249);
+  margin-top: 24px;
+
+  &-left {
+    width: 25%;
+
+    .footer-logo {
+      margin-bottom: 1.5rem;
+    }
+
+    img {
+      height: 2rem;
+      object-fit: contain;
+    }
+
+    p {
+      line-height: 1.75rem;
+      font-weight: 500;
+      color: rgb(71 85 105);
+      font-size: 1rem;
+    }
+  }
+
+  &-right {
+    width: 75%;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+
+  &-nav-item {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    h1 {
+      font-weight: 600;
+      color: rgb(55 65 81);
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+
+    .footer-nav-link {
+      line-height: 1.75rem;
+      font-weight: 500;
+      color: rgb(71 85 105);
+      font-size: 1rem;
+    }
+
+    & > :not(.show) {
+      margin-bottom: 1.5rem;
+      margin-left: 1rem;
+      text-align: right;
+    }
+  }
+
+}

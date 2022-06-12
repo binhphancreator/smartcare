@@ -2,6 +2,7 @@ import HeaderIntro from "../components/HeaderIntro";
 import Collapse from "../components/Collapse";
 import DefaultLayout from "../layouts/DefaultLayout";
 import CardFeature from "../components/Card/CardFeature";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
@@ -84,6 +85,8 @@ function Home() {
             </div>
           </div>
         </div>
+
+        <Footer/>
 
       </DefaultLayout>
     </>
