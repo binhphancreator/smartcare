@@ -1,0 +1,38 @@
+.collapse {
+  width: 100%;
+  padding: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  background-color: rgb(241 245 249);
+  cursor: pointer;
+
+  .collapse-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: $belize-hole
+  }
+
+  .btn-collapse, .collapse-icon {
+    color: $belize-hole;
+    transition: all .2s ease-in-out;
+  }
+
+  .btn-collapse svg, .collapse-icon svg {
+    width: 1rem;
+    height: 1rem;
+    display: block;
+  }
+
+  .collapse-body {
+    overflow-y: hidden;
+    transition: all .2s ease;
+  }
+}
