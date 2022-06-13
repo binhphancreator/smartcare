@@ -6,9 +6,10 @@ export default function Login() {
   return (
     <div>
       <AuthLayout>
-        <Card style={{ width: "400px" }} className="card">
+        <Card className="card">
           <Col>
-            <h2>Đăng nhập tài khoản Smartcare</h2>
+            <div className="card-auth-logo"><Link to='/'><img draggable="false" src={require("../assets/images/logo.svg").default} alt=""/></Link></div>
+            <h2 className="card-auth-title">Đăng nhập</h2>
           </Col>
           <Form layout="vertical">
             <Form.Item
@@ -37,22 +38,9 @@ export default function Login() {
               <Input.Password shape="round" name="password" />
             </Form.Item>
 
-            <Row gutter={[8, 8]} style={{ marginTop: 15 }}>
-              <Col>
-                <Row>
-                  <Link to="/dashboard">
-                    <Button
-                      className="login-btn"
-                      type="primary"
-                      shape="round"
-                      onClick
-                    >
-                      Đăng nhập
-                    </Button>
-                  </Link>
-                </Row>
-              </Col>
-            </Row>
+            <div className="card-auth-buttons">
+              <Button className="login-btn" type="primary" shape="round"> Đăng nhập </Button>
+            </div>
           </Form>
         </Card>
       </AuthLayout>
