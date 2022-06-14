@@ -1,6 +1,8 @@
 from routes.api import api
 from flask import request
 from app.controllers.api_controller import respondError, respondSuccess
+from app.models.prediction import Prediction
+from app.models.saveduser import SavedUser
 from Model_Knn import Knn_model as knn
 from bin.config import base_path
 
@@ -40,7 +42,36 @@ def cancerPredictBasic():
 
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN.sav", features, False)
+    saveduser = SavedUser.objects.first()
+    prediction = Prediction(
+        userId=saveduser['userId'],
+        BMI=request.form["BMI"],
+        Smoking=request.form["Smoking"],
+        AlcoholDrinking=request.form["AlcoholDrinking"],
+        Stroke=request.form["Stroke"],
+        PhysicalHealth=request.form["PhysicalHealth"],
+        MentalHealth=request.form["MentalHealth"],
+        DiffWalking=request.form["DiffWalking"],
+        Sex=request.form["Sex"],
+        AgeCategory=request.form["AgeCategory"],
+        Race=request.form["Race"],
+        Diabetic=request.form["Diabetic"],
+        PhysicalActivity=request.form["PhysicalActivity"],
+        GenHealth=request.form["GenHealth"],
+        SleepTime=request.form["SleepTime"],
+        Asthma=request.form["Asthma"],
+        KidneyDisease=request.form["KidneyDisease"],
+        SkinCancer=request.form["SkinCancer"],
+        HeartDisease=float(result[0])
+    )
+    prediction.save()
     return respondSuccess(float(result[0]), status=200)
+
+
+@api.route('/predict', methods=['GET'])
+def getAllPredictions():
+    predicts = Prediction.objects()
+    return respondSuccess(data=predicts)
 
 
 doctorFields = [
