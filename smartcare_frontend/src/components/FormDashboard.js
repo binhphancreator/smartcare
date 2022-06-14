@@ -11,12 +11,33 @@ export default function FormDashboard() {
     return arr;
   }
 
+  function handleSubmit(data) {
+    console.log(data)
+    // axios
+    //   .post("/login", formData)
+    //   .then((res) => {
+    //     if (res.data === "Register successfully") {
+    //       setTimeout(() => {
+    //         navigate("/");
+    //       }, 1000)
+    //       //log ui success
+    //     } else {
+    //       console.log("err login")
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  }
+
+
   return (
     <div className="dashboard">
       <div>
         <h1 className="form_intro">PHIẾU ĐIỀN PHỎNG VẤN</h1>
-        <Form layout="vertical" className="form">
+        <Form layout="vertical" className="form" onFinish={handleSubmit}>
           <Form.Item
+            name={'1'}
             label={
               <p
                 style={{
@@ -38,6 +59,7 @@ export default function FormDashboard() {
           </Form.Item>
 
           <Form.Item
+            name={'2'}
             label={
               <p
                 style={{
@@ -58,6 +80,7 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
+            name={'3'}
             label={
               <p
                 style={{
@@ -78,6 +101,7 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
+            name={'4'}
             label={
               <p
                 style={{
@@ -99,6 +123,7 @@ export default function FormDashboard() {
           </Form.Item>
 
           <Form.Item
+            name={'5'}
             label={
               <p
                 style={{
@@ -117,14 +142,15 @@ export default function FormDashboard() {
             <Select>
               {createrange(30).map((item, key) => {
                 return (
-                  <Select.Option value={item} className="form_select_chirlden">
-                    {item}{" "}
+                  <Select.Option key={item} value={item} className="form_select_chirlden">
+                    {item}
                   </Select.Option>
                 );
               })}
             </Select>
           </Form.Item>
           <Form.Item
+            name={'6'}
             label={
               <p
                 style={{
@@ -143,14 +169,15 @@ export default function FormDashboard() {
             <Select>
               {createrange(30).map((item, key) => {
                 return (
-                  <Select.Option value={item} className="form_select_chirlden">
-                    {item}{" "}
+                  <Select.Option key={item} value={item} className="form_select_chirlden">
+                    {item}
                   </Select.Option>
                 );
               })}
             </Select>
           </Form.Item>
           <Form.Item
+            name={'7'}
             label={
               <p
                 style={{
@@ -171,6 +198,7 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
+            name={'8'}
             label={
               <p
                 style={{
@@ -191,6 +219,65 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
+            name={'9'}
+            label={
+              <p
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                  paddingLeft: "20px",
+                  paddingTop: "10px",
+                }}
+              >
+                Bạn thuộc nhóm tuổi nào
+              </p>
+            }
+            className="form_select"
+          >
+            <Select>
+              <Select.Option value={0} className="form_select_chirlden">
+                18-24
+              </Select.Option>
+              <Select.Option value={1} className="form_select_chirlden">
+                25-29
+              </Select.Option>
+              <Select.Option value={2} className="form_select_chirlden">
+                30-34
+              </Select.Option>
+              <Select.Option value={3} className="form_select_chirlden">
+                35-39
+              </Select.Option>
+              <Select.Option value={4} className="form_select_chirlden">
+                40-44
+              </Select.Option>
+              <Select.Option value={5} className="form_select_chirlden">
+                45-49
+              </Select.Option>
+              <Select.Option value={6} className="form_select_chirlden">
+                50-54
+              </Select.Option>
+              <Select.Option value={7} className="form_select_chirlden">
+                55-59
+              </Select.Option>
+              <Select.Option value={8} className="form_select_chirlden">
+                60-64
+              </Select.Option>
+              <Select.Option value={9} className="form_select_chirlden">
+                65-69
+              </Select.Option>
+              <Select.Option value={10} className="form_select_chirlden">
+                70-74
+              </Select.Option>
+              <Select.Option value={11} className="form_select_chirlden">
+                75-79
+              </Select.Option>
+              <Select.Option value={12} className="form_select_chirlden">
+                Trên 80 tuổi
+              </Select.Option>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            name={'10'}
             label={
               <p
                 style={{
@@ -207,26 +294,27 @@ export default function FormDashboard() {
           >
             <Select>
               <Select.Option value={0} className="form_select_chirlden">
-                Anh-Điêng{" "}
+                Anh-Điêng
               </Select.Option>
               <Select.Option value={1} className="form_select_chirlden">
-                Châu Á{" "}
+                Châu Á
               </Select.Option>
               <Select.Option value={2} className="form_select_chirlden">
-                Châu Phi{" "}
+                Châu Phi
               </Select.Option>
               <Select.Option value={3} className="form_select_chirlden">
-                gốc Tây Ban Nha{" "}
+                gốc Tây Ban Nha
               </Select.Option>
               <Select.Option value={5} className="form_select_chirlden">
                 Châu Âu
               </Select.Option>
               <Select.Option value={4} className="form_select_chirlden">
-                Khác...{" "}
+                Khác...
               </Select.Option>
             </Select>
           </Form.Item>
           <Form.Item
+            name={'11'}
             label={
               <p
                 style={{
@@ -247,6 +335,7 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
+            name={'12'}
             label={
               <p
                 style={{
@@ -267,6 +356,7 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
+            name={'13'}
             label={
               <p
                 style={{
@@ -283,11 +373,12 @@ export default function FormDashboard() {
           >
             <Select>
               {createrange(4).map((item, key) => {
-                return <Select.Option value={item}>{item} </Select.Option>;
+                return <Select.Option key={item} value={item}>{item} </Select.Option>;
               })}
             </Select>
           </Form.Item>
           <Form.Item
+            name={"14"}
             label={
               <p
                 style={{
@@ -304,11 +395,12 @@ export default function FormDashboard() {
           >
             <Select>
               {createrange(24).map((item, key) => {
-                return <Select.Option value={item}>{item} </Select.Option>;
+                return <Select.Option key={item} value={item}>{item} </Select.Option>;
               })}
             </Select>
           </Form.Item>
           <Form.Item
+            name={"15"}
             label={
               <p
                 style={{
@@ -318,7 +410,7 @@ export default function FormDashboard() {
                   paddingTop: "10px",
                 }}
               >
-                Bạn đã từng bị tiểu đường chưa?
+                Bạn có từng bị bệnh suyễn?
               </p>
             }
             className="form_select"
@@ -329,6 +421,7 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
+            name={"16"}
             label={
               <p
                 style={{
@@ -349,6 +442,7 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
+            name={"17"}
             label={
               <p
                 style={{
@@ -368,15 +462,15 @@ export default function FormDashboard() {
               <Radio value={0}> Không </Radio>
             </Radio.Group>
           </Form.Item>
-          <Form.Item className="submit">
-            <Button
-              type="primary"
-              shape="round"
-              style={{ width: "120px", height: "40px " }}
-            >
-              Submit
-            </Button>
-          </Form.Item>
+
+          <Button
+            htmlType="submit"
+            type="primary"
+            shape="round"
+            style={{ width: "120px", height: "40px " }}
+          >
+            Submit
+          </Button>
         </Form>
       </div>
     </div>
