@@ -3,17 +3,23 @@ import { useState } from "react";
 import { Button, Form, InputNumber, Radio, Select } from "antd";
 import axios from "../global/axios";
 
+const textStyle = {
+  fontSize: "16px",
+  fontWeight: "bold",
+  paddingLeft: "20px",
+  paddingTop: "10px",
+}
+
 export default function FormDashboard() {
   function createrange(range) {
     let arr = [];
-    for (let i = 1; i <= range; i++) {
+    for (let i = 0; i <= range; i++) {
       arr.push(i);
     }
     return arr;
   }
 
   function handleSubmit(data) {
-    console.log(data)
     var formData = new FormData();
     for (let name in data) formData.append(name, data[name]);
 
@@ -40,12 +46,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn BMI của bạn!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Chỉ số BMI của bạn là bao nhiêu?
               </p>
@@ -63,12 +64,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn có thói quen hút thuốc không?
               </p>
@@ -85,12 +81,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn có thói quen uống rượt bia không?
               </p>
@@ -107,12 +98,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn đã bao giờ bị ngất? (đột quỵ)?
               </p>
@@ -130,12 +116,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Hãy ước lượng trong vòng 30 ngày trở lại đây, từng có bao nhiêu
                 ngày bạn cảm thấy không khoẻ?
@@ -158,12 +139,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Hãy ước lượng trong vòng 30 ngày trở lại đây, từng có bao nhiêu
                 ngày tinh thần bạn không tốt?
@@ -186,12 +162,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn có gặp khó khăn khi đi lại hoặc leo cầu thang?
               </p>
@@ -208,12 +179,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn thuộc phái nam hay nữ?
               </p>
@@ -230,12 +196,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn thuộc nhóm tuổi nào
               </p>
@@ -289,12 +250,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Sắc tộc của bạn là gì?
               </p>
@@ -327,12 +283,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn đã từng bị tiểu đường chưa?
               </p>
@@ -349,12 +300,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn có thói quen tập thể dục?
               </p>
@@ -371,12 +317,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Nhìn chung sức khoẻ của bạn như thế nào?
               </p>
@@ -394,12 +335,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Một ngày bạn ngủ bao nhiêu giờ?
               </p>
@@ -417,12 +353,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn có từng bị bệnh suyễn?
               </p>
@@ -439,12 +370,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn có từng bị bệnh thận? (không bao gồm sỏi, nhiễm trùng)
               </p>
@@ -461,12 +387,7 @@ export default function FormDashboard() {
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  paddingLeft: "20px",
-                  paddingTop: "10px",
-                }}
+                style={textStyle}
               >
                 Bạn có từng bị ung thư da?
               </p>
