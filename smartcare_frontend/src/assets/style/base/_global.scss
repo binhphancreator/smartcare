@@ -4,11 +4,21 @@ $logo_color: #2471a3;
 body {
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
-  background-color: $asbestos-50;
+  background-color: rgb(248 250 252);
 }
 
 .container {
   margin: 0 auto;
   max-width: 1400px;
   padding: 0 50px;
+}
+
+button, button:focus, button:hover {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.space-y-24 > :not(:last-child)  {
+  margin-bottom: 24px;
 }

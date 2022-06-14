@@ -112,7 +112,7 @@ header.header-intro {
     height: 125px;
     border-radius: 9999px;
     filter: blur(60px);
-    background-color: $alizarin-600;
+    background-color: $belize-hole-600;
     top: 10%;
     right: 20%;
   }
@@ -135,6 +135,7 @@ header.header-intro {
   .header-intro-right {
     width: 50%;
     img {
+      max-width: 80%;
       width: 100%;
       object-fit: contain;
     }

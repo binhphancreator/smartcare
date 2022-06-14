@@ -5,7 +5,7 @@ export default function HeaderIntro() {
   return (
     <header className="header-intro">
       <div className="header-intro-left">
-        <p className="intro-small">#smartcare</p>
+        <p className="badge">#smartcare</p>
         <p className="intro-big">Hệ thống kiểm tra sức khỏe</p>
         <p className="intro-long">
           Hệ thống dự đoán tình trạng sức khỏe dựa trên mô hình học máy.
@@ -17,10 +17,10 @@ export default function HeaderIntro() {
         </Link>
       </div>
       <div className="header-intro-right">
-        <div className="">
+        <div className="" style={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
           <img
             draggable="false"
-            src={require("../assets/images/intro.png")}
+            src={require("../assets/images/shield.png")}
             alt=""
           />
         </div>

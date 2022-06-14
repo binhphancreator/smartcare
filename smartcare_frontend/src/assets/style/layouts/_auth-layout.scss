@@ -1,0 +1,130 @@
+.auth-layout {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 100vh;
+    width: 100%;
+    background-color: #fff;
+
+    &-left {
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(262.38deg, #4079BB 7.83%, #004BA4 103.41%);
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 500px;
+        }
+
+        svg {
+            position: absolute;
+        }
+    }
+
+    &-right {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 100px;
+
+        .ant-card {
+            background: transparent;
+            border-radius: 0;
+            border: none;
+            height: 100%;
+            width: 100%;
+            .card-auth-logo img {
+                height: 30px;
+                object-fit: contain;
+            }
+
+            .card-auth-logo {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 40px;
+            }
+
+            .card-auth-title {
+                text-align: center;
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 20px;
+                letter-spacing: -0.5px;
+                color: #155EA8;
+            }
+
+            label {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                color: #3E5B9D;
+            }
+
+            .ant-input {
+                background: #F4F9FF;
+                border-radius: 6px;
+                padding: 12px 14px;
+                border: 1px solid #E2E9FA;
+            }
+
+            .ant-form-item-control-input-content {
+                border-radius: 6px;
+                background: #F4F9FF;
+                border: 1px solid #E2E9FA;
+
+                input {
+                    border: none;
+                }
+
+                .ant-input-affix-wrapper {
+                    background-color: transparent;
+                    padding: 12px 14px;
+                    overflow: hidden;
+                    border: none !important;
+
+                    &-focused {
+                        box-shadow: none;
+                    }
+
+                    input {
+                        padding: 0;
+                    }
+                }
+            }
+
+            .ant-input:focus, .ant-input-focused {
+                border: none;
+                box-shadow: none;
+                outline: none;
+            }
+
+            .card-auth-buttons {
+                margin-top: 24px;
+            }
+
+            .ant-btn {
+                margin-right: 20px;
+                font-size: medium;
+                font-weight: 500;
+                color: white;
+                padding: 8px 40px;
+                border-radius: 10px;
+                background-color: $logo_color;
+                box-shadow: -1px 5px 20px 0px $belize-hole-200;
+                border: 2px solid $logo_color;
+                text-transform: uppercase;
+                height: auto;
+                width: 100%;
+            }
+        }
+    }
+
+
+}
