@@ -13,8 +13,12 @@ export default function Register(props) {
 
     axios
       .post("/register", formData)
-      .then((response) => {
-        navigate("/login");
+      .then((res) => {
+        if (res.data === "Register successfully") {
+          navigate("/login");
+        } else {
+          console.log("err register")
+        }
       })
       .catch((error) => {
         console.log(error);

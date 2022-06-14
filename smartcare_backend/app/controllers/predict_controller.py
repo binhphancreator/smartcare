@@ -24,11 +24,9 @@ fields = [
     "SkinCancer"
 ]
 
-features = []
-
-
 @api.route('/predict', methods=['POST'])
 def cancerPredictBasic():
+    features = []
     for i in fields:
         if request.form[i] == None:
             return respondError("Missing field " + i, message="Missing field " + i, status=401)
@@ -58,11 +56,9 @@ doctorFields = [
     "time"
 ]
 
-doctorFeatures = []
-
-
 @api.route('/predict/doctor', methods=['POST'])
 def cancerPredictDoctor():
+    doctorFeatures = []
     for i in doctorFields:
         if request.form[i] == None:
             return respondError("Missing field " + i, message="Missing field " + i, status=401)
