@@ -1,5 +1,6 @@
 flask==2.1.2
 flask-mongoengine==1.0.0
+flask_cors
 python-dotenv==0.20.0
 WTForms==3.0.1
 PyJWT==1.7.1
