@@ -6,31 +6,29 @@ from app.models.saveduser import SavedUser
 from Model_Knn import Knn_model as knn
 from bin.config import base_path
 
-fields = [
-    "BMI",
-    "Smoking",
-    "AlcoholDrinking",
-    "Stroke",
-    "PhysicalHealth",
-    "MentalHealth",
-    "DiffWalking",
-    "Sex",
-    "AgeCategory",
-    "Race",
-    "Diabetic",
-    "PhysicalActivity",
-    "GenHealth",
-    "SleepTime",
-    "Asthma",
-    "KidneyDisease",
-    "SkinCancer"
-]
-
-features = []
-
 
 @api.route('/predict', methods=['POST'])
 def cancerPredictBasic():
+    features = []
+    fields = [
+        "BMI",
+        "Smoking",
+        "AlcoholDrinking",
+        "Stroke",
+        "PhysicalHealth",
+        "MentalHealth",
+        "DiffWalking",
+        "Sex",
+        "AgeCategory",
+        "Race",
+        "Diabetic",
+        "PhysicalActivity",
+        "GenHealth",
+        "SleepTime",
+        "Asthma",
+        "KidneyDisease",
+        "SkinCancer"
+    ]
     for i in fields:
         if request.form[i] == None:
             return respondError("Missing field " + i, message="Missing field " + i, status=401)
@@ -74,26 +72,23 @@ def getAllPredictions():
     return respondSuccess(data=predicts)
 
 
-doctorFields = [
-    "age",
-    "anaemia",
-    "creatinine_phosphokinase",
-    "diabetes",
-    "ejection_fraction",
-    "high_blood_pressure",
-    "platelets",
-    "serum_creatinine",
-    "serum_sodium",
-    "sex",
-    "smoking",
-    "time"
-]
-
-doctorFeatures = []
-
-
 @api.route('/predict/doctor', methods=['POST'])
 def cancerPredictDoctor():
+    doctorFeatures = []
+    doctorFields = [
+        "age",
+        "anaemia",
+        "creatinine_phosphokinase",
+        "diabetes",
+        "ejection_fraction",
+        "high_blood_pressure",
+        "platelets",
+        "serum_creatinine",
+        "serum_sodium",
+        "sex",
+        "smoking",
+        "time"
+    ]
     for i in doctorFields:
         if request.form[i] == None:
             return respondError("Missing field " + i, message="Missing field " + i, status=401)
