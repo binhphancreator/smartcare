@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Form, InputNumber, Radio, Select } from "antd";
+import axios from "../global/axios";
 
 export default function FormDashboard() {
   function createrange(range) {
@@ -13,21 +14,19 @@ export default function FormDashboard() {
 
   function handleSubmit(data) {
     console.log(data)
-    // axios
-    //   .post("/login", formData)
-    //   .then((res) => {
-    //     if (res.data === "Register successfully") {
-    //       setTimeout(() => {
-    //         navigate("/");
-    //       }, 1000)
-    //       //log ui success
-    //     } else {
-    //       console.log("err login")
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    var formData = new FormData();
+    for (let name in data) formData.append(name, data[name]);
+
+    axios
+      .post("/predict", formData)
+      .then((res) => {
+        if (res.data.status === 200) {
+          console.log(res.data.data)
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
 
@@ -37,7 +36,8 @@ export default function FormDashboard() {
         <h1 className="form_intro">PHIẾU ĐIỀN PHỎNG VẤN</h1>
         <Form layout="vertical" className="form" onFinish={handleSubmit}>
           <Form.Item
-            name={'1'}
+            name={'BMI'}
+            rules={[{ required: true, message: 'Hãy chọn BMI của bạn!' }]}
             label={
               <p
                 style={{
@@ -59,7 +59,8 @@ export default function FormDashboard() {
           </Form.Item>
 
           <Form.Item
-            name={'2'}
+            name={'Smoking'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -80,7 +81,8 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={'3'}
+            name={'AlcoholDrinking'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -101,7 +103,8 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={'4'}
+            name={'Stroke'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -123,7 +126,8 @@ export default function FormDashboard() {
           </Form.Item>
 
           <Form.Item
-            name={'5'}
+            name={'PhysicalHealth'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -150,7 +154,8 @@ export default function FormDashboard() {
             </Select>
           </Form.Item>
           <Form.Item
-            name={'6'}
+            name={'MentalHealth'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -177,7 +182,8 @@ export default function FormDashboard() {
             </Select>
           </Form.Item>
           <Form.Item
-            name={'7'}
+            name={'DiffWalking'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -198,7 +204,8 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={'8'}
+            name={'Sex'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -219,7 +226,8 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={'9'}
+            name={'AgeCategory'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -277,7 +285,8 @@ export default function FormDashboard() {
             </Select>
           </Form.Item>
           <Form.Item
-            name={'10'}
+            name={'Race'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -303,7 +312,7 @@ export default function FormDashboard() {
                 Châu Phi
               </Select.Option>
               <Select.Option value={3} className="form_select_chirlden">
-                gốc Tây Ban Nha
+                Gốc Tây Ban Nha
               </Select.Option>
               <Select.Option value={5} className="form_select_chirlden">
                 Châu Âu
@@ -314,7 +323,8 @@ export default function FormDashboard() {
             </Select>
           </Form.Item>
           <Form.Item
-            name={'11'}
+            name={'Diabetic'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -335,7 +345,8 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={'12'}
+            name={'PhysicalActivity'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -356,7 +367,8 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={'13'}
+            name={'GenHealth'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -378,7 +390,8 @@ export default function FormDashboard() {
             </Select>
           </Form.Item>
           <Form.Item
-            name={"14"}
+            name={"SleepTime"}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -400,7 +413,8 @@ export default function FormDashboard() {
             </Select>
           </Form.Item>
           <Form.Item
-            name={"15"}
+            name={"Asthma"}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -421,7 +435,8 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={"16"}
+            name={"KidneyDisease"}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
@@ -442,7 +457,8 @@ export default function FormDashboard() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={"17"}
+            name={"SkinCancer"}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={{
