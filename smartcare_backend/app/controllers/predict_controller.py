@@ -8,7 +8,8 @@ from bin.config import base_path
 
 
 @api.route('/predict', methods=['POST'])
-def cancerPredictBasic():
+@oauth
+def cancerPredictBasic(user):
     features = []
     fields = [
         "BMI",
@@ -40,9 +41,9 @@ def cancerPredictBasic():
 
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN.sav", features, False)
-    saveduser = SavedUser.objects.first()
+    # saveduser = SavedUser.objects.first()
     prediction = Prediction(
-        userId=saveduser['userId'],
+        # userId=user.id,
         BMI=request.form["BMI"],
         Smoking=request.form["Smoking"],
         AlcoholDrinking=request.form["AlcoholDrinking"],

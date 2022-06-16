@@ -3,7 +3,7 @@ import datetime
 
 
 class Prediction(mongoengine.Document):
-    userId = mongoengine.ObjectIdField(required=True)
+    userId = mongoengine.ObjectIdField(required=False)
     BMI = mongoengine.FloatField(required=True)
     Smoking = mongoengine.IntField(required=True)
     AlcoholDrinking = mongoengine.IntField(required=True)

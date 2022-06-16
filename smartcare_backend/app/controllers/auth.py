@@ -47,10 +47,6 @@ def login():
         "access_token": token,
         "expires_at": expires_at
     }
-    saveduser = SavedUser.objects.first()
-    saveduser.delete()
-    saveduser = SavedUser(userId=user['id'])
-    saveduser.save()
     return respondSuccess(data=data, status=200)
 
 
