@@ -1,11 +1,11 @@
 import React from "react";
-import FormDashboard from "../components/FormDashboard";
+import FormBasic from "../components/FormBasic";
 import DefaultLayout from "../layouts/DefaultLayout";
-export default function Dashboard() {
+export default function Basic() {
   return (
     <div>
       <DefaultLayout>
-        <FormDashboard />
+        <FormBasic />
       </DefaultLayout>
     </div>
   );
