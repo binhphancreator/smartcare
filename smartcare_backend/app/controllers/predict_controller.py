@@ -9,7 +9,7 @@ from bin.config import base_path
 
 @api.route('/predict', methods=['POST'])
 # @oauth
-def cancerPredictBasic(user):
+def cancerPredictBasic():
     features = []
     fields = [
         "BMI",

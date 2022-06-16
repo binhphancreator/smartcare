@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, InputNumber, Radio, Select } from "antd";
+import { Button, Form, InputNumber, Radio } from "antd";
 import axios from "../global/axios";
 
 const textStyle = {
@@ -10,14 +10,6 @@ const textStyle = {
 }
 
 export default function FormDoctor() {
-  function createrange(range) {
-    let arr = [];
-    for (let i = 0; i <= range; i++) {
-      arr.push(i);
-    }
-    return arr;
-  }
-
   function handleSubmit(data) {
     var formData = new FormData();
     for (let name in data) formData.append(name, data[name]);
@@ -36,17 +28,17 @@ export default function FormDoctor() {
 
   return (
     <div className="container">
-      <h1 className="form_intro">PHIẾU ĐIỀN PHỎNG VẤN</h1>
+      <h1 className="form_intro">PHIẾU ĐIỀN CỦA BÁC SĨ</h1>
       <div>
         <Form layout="vertical" className="form" onFinish={handleSubmit}>
           <Form.Item
-            name={'BMI'}
+            name={'age'}
             rules={[{ required: true, message: 'Hãy chọn BMI của bạn!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Chỉ số BMI của bạn là bao nhiêu?
+                Tuổi bệnh nhân
               </p>
             }
             className="form_select"
@@ -58,13 +50,13 @@ export default function FormDoctor() {
           </Form.Item>
 
           <Form.Item
-            name={'Smoking'}
+            name={'anaemia'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Bạn có thói quen hút thuốc không?
+                Giảm hồng cầu hoặc hemoglobin
               </p>
             }
             className="form_select"
@@ -75,30 +67,30 @@ export default function FormDoctor() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={'AlcoholDrinking'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
+            name={'creatinine_phosphokinase'}
+            rules={[{ required: true, message: 'Hãy nhập chỉ số' }]}
             label={
               <p
                 style={textStyle}
               >
-                Bạn có thói quen uống rượt bia không?
+                Mức độ của enzym CPK trong máu (mcg / L)
               </p>
             }
             className="form_select"
           >
-            <Radio.Group className="form_select_chirlden">
-              <Radio value={1}> Có </Radio>
-              <Radio value={0}> Không </Radio>
-            </Radio.Group>
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
           </Form.Item>
           <Form.Item
-            name={'Stroke'}
+            name={'diabetes'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Bạn đã bao giờ bị ngất? (đột quỵ)?
+                Bệnh nhân có bị tiểu đường hay không
               </p>
             }
             className="form_select"
@@ -110,59 +102,30 @@ export default function FormDoctor() {
           </Form.Item>
 
           <Form.Item
-            name={'PhysicalHealth'}
+            name={'ejection_fraction'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Hãy ước lượng trong vòng 30 ngày trở lại đây, từng có bao nhiêu
-                ngày bạn cảm thấy không khoẻ?
+                Phần trăm máu rời khỏi tim mỗi lần co bóp (%)
               </p>
             }
             className="form_select"
           >
-            <Select>
-              {createrange(30).map((item, key) => {
-                return (
-                  <Select.Option key={item} value={item} className="form_select_chirlden">
-                    {item}
-                  </Select.Option>
-                );
-              })}
-            </Select>
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
           </Form.Item>
           <Form.Item
-            name={'MentalHealth'}
+            name={'high_blood_pressure'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Hãy ước lượng trong vòng 30 ngày trở lại đây, từng có bao nhiêu
-                ngày tinh thần bạn không tốt?
-              </p>
-            }
-            className="form_select"
-          >
-            <Select>
-              {createrange(30).map((item, key) => {
-                return (
-                  <Select.Option key={item} value={item} className="form_select_chirlden">
-                    {item}
-                  </Select.Option>
-                );
-              })}
-            </Select>
-          </Form.Item>
-          <Form.Item
-            name={'DiffWalking'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Bạn có gặp khó khăn khi đi lại hoặc leo cầu thang?
+                Bệnh nhân có bị huyết áp cao?
               </p>
             }
             className="form_select"
@@ -173,13 +136,64 @@ export default function FormDoctor() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={'Sex'}
+            name={'platelets'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Bạn thuộc phái nam hay nữ?
+                Số lượng tiểu cầu trong máu (kiloplatelets/mL)
+              </p>
+            }
+            className="form_select"
+          >
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
+          </Form.Item>
+          <Form.Item
+            name={'serum_creatinine'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
+            label={
+              <p
+                style={textStyle}
+              >
+                Mức độ creatinine huyết thanh trong máu (mg/dl)
+              </p>
+            }
+            className="form_select"
+          >
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
+          </Form.Item>
+          <Form.Item
+            name={'serum_sodium'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
+            label={
+              <p
+                style={textStyle}
+              >
+                Mức natri huyết thanh trong máu (mEq / L)
+              </p>
+            }
+            className="form_select"
+          >
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
+          </Form.Item>
+          <Form.Item
+            name={'sex'}
+            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
+            label={
+              <p
+                style={textStyle}
+              >
+                Giới tính người bệnh
               </p>
             }
             className="form_select"
@@ -190,100 +204,13 @@ export default function FormDoctor() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={'AgeCategory'}
+            name={'smoking'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Bạn thuộc nhóm tuổi nào
-              </p>
-            }
-            className="form_select"
-          >
-            <Select>
-              <Select.Option value={0} className="form_select_chirlden">
-                18-24
-              </Select.Option>
-              <Select.Option value={1} className="form_select_chirlden">
-                25-29
-              </Select.Option>
-              <Select.Option value={2} className="form_select_chirlden">
-                30-34
-              </Select.Option>
-              <Select.Option value={3} className="form_select_chirlden">
-                35-39
-              </Select.Option>
-              <Select.Option value={4} className="form_select_chirlden">
-                40-44
-              </Select.Option>
-              <Select.Option value={5} className="form_select_chirlden">
-                45-49
-              </Select.Option>
-              <Select.Option value={6} className="form_select_chirlden">
-                50-54
-              </Select.Option>
-              <Select.Option value={7} className="form_select_chirlden">
-                55-59
-              </Select.Option>
-              <Select.Option value={8} className="form_select_chirlden">
-                60-64
-              </Select.Option>
-              <Select.Option value={9} className="form_select_chirlden">
-                65-69
-              </Select.Option>
-              <Select.Option value={10} className="form_select_chirlden">
-                70-74
-              </Select.Option>
-              <Select.Option value={11} className="form_select_chirlden">
-                75-79
-              </Select.Option>
-              <Select.Option value={12} className="form_select_chirlden">
-                Trên 80 tuổi
-              </Select.Option>
-            </Select>
-          </Form.Item>
-          <Form.Item
-            name={'Race'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Sắc tộc của bạn là gì?
-              </p>
-            }
-            className="form_select"
-          >
-            <Select>
-              <Select.Option value={0} className="form_select_chirlden">
-                Anh-Điêng
-              </Select.Option>
-              <Select.Option value={1} className="form_select_chirlden">
-                Châu Á
-              </Select.Option>
-              <Select.Option value={2} className="form_select_chirlden">
-                Châu Phi
-              </Select.Option>
-              <Select.Option value={3} className="form_select_chirlden">
-                Gốc Tây Ban Nha
-              </Select.Option>
-              <Select.Option value={5} className="form_select_chirlden">
-                Châu Âu
-              </Select.Option>
-              <Select.Option value={4} className="form_select_chirlden">
-                Khác...
-              </Select.Option>
-            </Select>
-          </Form.Item>
-          <Form.Item
-            name={'Diabetic'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Bạn đã từng bị tiểu đường chưa?
+                Người bệnh có hút thuốc?
               </p>
             }
             className="form_select"
@@ -294,108 +221,21 @@ export default function FormDoctor() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
-            name={'PhysicalActivity'}
+            name={'time'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Bạn có thói quen tập thể dục?
+                Số lần xét nghiệm
               </p>
             }
             className="form_select"
           >
-            <Radio.Group className="form_select_chirlden">
-              <Radio value={1}> Có </Radio>
-              <Radio value={0}> Không </Radio>
-            </Radio.Group>
-          </Form.Item>
-          <Form.Item
-            name={'GenHealth'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Nhìn chung sức khoẻ của bạn như thế nào?
-              </p>
-            }
-            className="form_select"
-          >
-            <Select>
-              {createrange(4).map((item, key) => {
-                return <Select.Option key={item} value={item}>{item} </Select.Option>;
-              })}
-            </Select>
-          </Form.Item>
-          <Form.Item
-            name={"SleepTime"}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Một ngày bạn ngủ bao nhiêu giờ?
-              </p>
-            }
-            className="form_select"
-          >
-            <Select>
-              {createrange(24).map((item, key) => {
-                return <Select.Option key={item} value={item}>{item} </Select.Option>;
-              })}
-            </Select>
-          </Form.Item>
-          <Form.Item
-            name={"Asthma"}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Bạn có từng bị bệnh suyễn?
-              </p>
-            }
-            className="form_select"
-          >
-            <Radio.Group className="form_select_chirlden">
-              <Radio value={1}> Có </Radio>
-              <Radio value={0}> Không </Radio>
-            </Radio.Group>
-          </Form.Item>
-          <Form.Item
-            name={"KidneyDisease"}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Bạn có từng bị bệnh thận? (không bao gồm sỏi, nhiễm trùng)
-              </p>
-            }
-            className="form_select"
-          >
-            <Radio.Group className="form_select_chirlden">
-              <Radio value={1}> Có </Radio>
-              <Radio value={0}> Không </Radio>
-            </Radio.Group>
-          </Form.Item>
-          <Form.Item
-            name={"SkinCancer"}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Bạn có từng bị ung thư da?
-              </p>
-            }
-            className="form_select"
-          >
-            <Radio.Group className="form_select_chirlden">
-              <Radio value={1}> Có </Radio>
-              <Radio value={0}> Không </Radio>
-            </Radio.Group>
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
           </Form.Item>
 
           <Button

@@ -1,6 +1,6 @@
 import React from "react";
 import AuthLayout from "../layouts/AuthLayout";
-import { Row, Button, Col, Card, Form, Input } from "antd";
+import { Button, Col, Card, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../global/axios";
 
