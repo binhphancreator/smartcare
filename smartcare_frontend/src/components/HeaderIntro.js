@@ -12,12 +12,12 @@ export default function HeaderIntro() {
           Smartcare hi vọng rằng có thể bảo vệ được mọi người từ việc cảnh báo
           những nguy cơ hàng ngày mà bạn có thể mắc phải.
         </p>
-        <Link className="evaluate-btn" to="/dashboard">
-          Dự đoán ngay
+        <Link className="evaluate-btn" to="/basic">
+          Dự đoán nhanh
         </Link>
       </div>
       <div className="header-intro-right">
-        <div className="" style={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
+        <div className="" style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
           <img
             draggable="false"
             src={require("../assets/images/shield.png")}

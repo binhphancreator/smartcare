@@ -8,7 +8,7 @@ from bin.config import base_path
 
 
 @api.route('/predict', methods=['POST'])
-@oauth
+# @oauth
 def cancerPredictBasic(user):
     features = []
     fields = [

@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { Button, Form, InputNumber, Radio, Select } from "antd";
 import axios from "../global/axios";
 
@@ -10,7 +9,7 @@ const textStyle = {
   paddingTop: "10px",
 }
 
-export default function FormDashboard() {
+export default function FormDoctor() {
   function createrange(range) {
     let arr = [];
     for (let i = 0; i <= range; i++) {
@@ -24,7 +23,7 @@ export default function FormDashboard() {
     for (let name in data) formData.append(name, data[name]);
 
     axios
-      .post("/predict", formData)
+      .post("/predict/doctor", formData)
       .then((res) => {
         if (res.data.status === 200) {
           console.log(res.data.data)
@@ -35,11 +34,10 @@ export default function FormDashboard() {
       });
   }
 
-
   return (
-    <div className="dashboard">
+    <div className="container">
+      <h1 className="form_intro">PHIẾU ĐIỀN PHỎNG VẤN</h1>
       <div>
-        <h1 className="form_intro">PHIẾU ĐIỀN PHỎNG VẤN</h1>
         <Form layout="vertical" className="form" onFinish={handleSubmit}>
           <Form.Item
             name={'BMI'}
