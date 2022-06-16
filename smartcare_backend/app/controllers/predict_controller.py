@@ -6,10 +6,42 @@ from app.middlewares.oauth import oauth
 from Model_Knn import Knn_model as knn
 from bin.config import base_path
 
+@api.route('/predict/doctor', methods=['POST'])
+def cancerPredictDoctor():
+    doctorFeatures = []
+    doctorFields = [
+        "age",
+        "anaemia",
+        "creatinine_phosphokinase",
+        "diabetes",
+        "ejection_fraction",
+        "high_blood_pressure",
+        "platelets",
+        "serum_creatinine",
+        "serum_sodium",
+        "sex",
+        "smoking",
+        "time"
+    ]
+    for i in doctorFields:
+        if request.form[i] == None:
+            return respondError("Missing field " + i, message="Missing field " + i, status=401)
+        else:
+            if i == "platelets":
+                doctorFeatures.append(int(request.form[i]))
+            else:
+                if i == "serum_creatinine":
+                    doctorFeatures.append(float(request.form[i]))
+                else:
+                    doctorFeatures.append(int(request.form[i]))
+    result = knn.makePrediction(
+        base_path + "/Model_Knn/MODEL_KNN_DOCTOR.sav", doctorFeatures, True)
+    return respondSuccess(data=str(result), status=200)
+
 
 @api.route('/predict', methods=['POST'])
-# @oauth
-def cancerPredictBasic():
+@oauth
+def cancerPredictBasic(user):
     features = []
     fields = [
         "BMI",
@@ -63,44 +95,10 @@ def cancerPredictBasic():
         HeartDisease=float(result)
     )
     prediction.save()
-    return respondSuccess(float(result), status=200)
+    return respondSuccess(float(result[1]), status=200)
 
 
 @api.route('/predict', methods=['GET'])
 def getAllPredictions():
     predicts = Prediction.objects()
     return respondSuccess(data=predicts)
-
-
-@api.route('/predict/doctor', methods=['POST'])
-def cancerPredictDoctor():
-    doctorFeatures = []
-    doctorFields = [
-        "age",
-        "anaemia",
-        "creatinine_phosphokinase",
-        "diabetes",
-        "ejection_fraction",
-        "high_blood_pressure",
-        "platelets",
-        "serum_creatinine",
-        "serum_sodium",
-        "sex",
-        "smoking",
-        "time"
-    ]
-    for i in doctorFields:
-        if request.form[i] == None:
-            return respondError("Missing field " + i, message="Missing field " + i, status=401)
-        else:
-            if i == "platelets":
-                doctorFeatures.append(int(request.form[i]))
-            else:
-                if i == "serum_creatinine":
-                    doctorFeatures.append(float(request.form[i]))
-                else:
-                    doctorFeatures.append(int(request.form[i]))
-
-    result = knn.makePrediction(
-        base_path + "/Model_Knn/MODEL_KNN_DOCTOR.sav", doctorFeatures, True)
-    return respondSuccess(float(result), status=200)

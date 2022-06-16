@@ -92,4 +92,4 @@ def makePrediction(model_link, features, isForDoctor):
 
     print("feature reshaped ", features)
     result = model.predict_proba(features)
-    return result[0][1]
+    return result[0]
