@@ -60,10 +60,10 @@ def cancerPredictBasic(user):
         Asthma=request.form["Asthma"],
         KidneyDisease=request.form["KidneyDisease"],
         SkinCancer=request.form["SkinCancer"],
-        HeartDisease=float(result[0])
+        HeartDisease=float(result)
     )
     prediction.save()
-    return respondSuccess(float(result[0]), status=200)
+    return respondSuccess(float(result), status=200)
 
 
 @api.route('/predict', methods=['GET'])
@@ -103,4 +103,4 @@ def cancerPredictDoctor():
 
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN_DOCTOR.sav", doctorFeatures, True)
-    return respondSuccess(float(result[0]), status=200)
+    return respondSuccess(float(result), status=200)
