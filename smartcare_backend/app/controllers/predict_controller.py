@@ -2,7 +2,7 @@ from routes.api import api
 from flask import request
 from app.controllers.api_controller import respondError, respondSuccess
 from app.models.prediction import Prediction
-from app.models.saveduser import SavedUser
+from app.middlewares.oauth import oauth
 from Model_Knn import Knn_model as knn
 from bin.config import base_path
 
@@ -41,9 +41,8 @@ def cancerPredictBasic(user):
 
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN.sav", features, False)
-    # saveduser = SavedUser.objects.first()
     prediction = Prediction(
-        # userId=user.id,
+        userId=user['id'],
         BMI=request.form["BMI"],
         Smoking=request.form["Smoking"],
         AlcoholDrinking=request.form["AlcoholDrinking"],

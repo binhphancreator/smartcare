@@ -5,7 +5,6 @@ from app.formrequest.loginform import LoginForm
 from app.controllers.api_controller import respondError, respondSuccess
 from app.middlewares.oauth import oauth
 from app.models.user import User
-from app.models.saveduser import SavedUser
 from bin.app import bcrypt
 from app.middlewares.api import api as api_middleware
 import jwt
