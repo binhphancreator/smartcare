@@ -3,8 +3,15 @@ import React from "react";
 import BlogCard from "../components/Card/BlogCard";
 import DefaultLayout from "../layouts/DefaultLayout";
 import api_blog from "../assets/mock_api_blog";
+// import axios from "../global/axios";
 
 export default function Blog() {
+  // let data
+  // axios.get("/blogs").then((res) => {
+  //   data = res.data.data
+  //   console.log(data)
+  // })
+
   const imgSrc =
     "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png";
   return (

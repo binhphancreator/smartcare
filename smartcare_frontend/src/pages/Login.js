@@ -14,10 +14,12 @@ export default function Login() {
     axios
       .post("/login", formData)
       .then((res) => {
-        if (res.data === "Register successfully") {
+        if (res.data.status === 200) {
+          localStorage.setItem('token', res.data.data.access_token)
           setTimeout(() => {
             navigate("/");
-          }, 1000)
+            window.location.reload();
+          }, 1500)
           //log ui success
         } else {
           console.log("err login")

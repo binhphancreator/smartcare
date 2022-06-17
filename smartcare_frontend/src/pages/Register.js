@@ -2,7 +2,7 @@ import React from "react";
 import AuthLayout from "../layouts/AuthLayout";
 import { Row, Button, Col, Card, Form, Input } from "antd";
 import axios from "../global/axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register(props) {
   const navigate = useNavigate();
@@ -29,6 +29,7 @@ export default function Register(props) {
     <div>
       <AuthLayout>
         <Card style={{ width: "400px" }} className="card">
+          <div className="card-auth-logo"><Link to='/'><img draggable="false" src={require("../assets/images/logo.svg").default} alt="" /></Link></div>
           <Col>
             <h2>Đăng ký tài khoản Smartcare</h2>
           </Col>
@@ -96,20 +97,16 @@ export default function Register(props) {
               <Input.Password shape="round" name="password_confirm" />
             </Form.Item>
 
-            <Row gutter={[8, 8]} style={{ marginTop: 15 }}>
-              <Col>
-                <Row>
-                  <Button
-                    htmlType="submit"
-                    className="login-btn"
-                    type="primary"
-                    shape="round"
-                  >
-                    Đăng ký
-                  </Button>
-                </Row>
-              </Col>
-            </Row>
+            <div className="card-auth-buttons">
+              <Button
+                htmlType="submit"
+                className="login-btn"
+                type="primary"
+                shape="round"
+              >
+                Đăng ký
+              </Button>
+            </div>
           </Form>
         </Card>
       </AuthLayout>

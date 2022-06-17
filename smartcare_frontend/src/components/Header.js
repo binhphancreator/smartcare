@@ -1,7 +1,8 @@
-import { Layout } from "antd";
+import { Button, Layout } from "antd";
 import { Link } from "react-router-dom";
 
 export default function Header() {
+  const isLogin = localStorage.getItem('token') !== null
   return (
     <Layout.Header>
       <div className="header-left">
@@ -28,12 +29,22 @@ export default function Header() {
       </div>
 
       <div className="header-right">
-        <Link className="link-login" to="/login">
-          Login
-        </Link>
-        <Link className="link-register" to="/register">
-          Register
-        </Link>
+        {!isLogin ?
+          <>
+            <Link className="link-login" to="/login">
+              Đăng nhập
+            </Link>
+            <Link className="link-register" to="/register">
+              Đăng kí
+            </Link>
+          </> :
+          <Button type="primary" onClick={() => {
+            localStorage.removeItem('token')
+            window.location.reload()
+          }}>
+            Đăng xuất
+          </Button>
+        }
       </div>
     </Layout.Header>
   );
