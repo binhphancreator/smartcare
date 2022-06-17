@@ -14,8 +14,10 @@ export default function Register(props) {
     axios
       .post("/register", formData)
       .then((res) => {
-        if (res.data === "Register successfully") {
-          navigate("/login");
+        if (res.data.status === 201) {
+          setTimeout(() => {
+            navigate("/login")
+          }, 1000)
         } else {
           console.log("err register")
         }

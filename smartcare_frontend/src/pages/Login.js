@@ -67,6 +67,9 @@ export default function Login() {
 
             <div className="card-auth-buttons">
               <Button htmlType="submit" className="login-btn" type="primary" shape="round"> Đăng nhập </Button>
+              <Button className="login-btn" type="primary" shape="round" onClick={() => navigate("/register")} style={{ marginTop: '20px' }}>
+                Đăng kí
+              </Button>
             </div>
           </Form>
         </Card>

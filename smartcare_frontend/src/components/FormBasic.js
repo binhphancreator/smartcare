@@ -1,6 +1,7 @@
-import React from "react";
-import { Button, Form, InputNumber, Radio, Select } from "antd";
+import React, { useState } from "react";
+import { Button, Form, InputNumber, Modal, Radio, Select } from "antd";
 import axios from "../global/axios";
+import { useNavigate } from "react-router-dom";
 
 const textStyle = {
   fontSize: "16px",
@@ -10,6 +11,28 @@ const textStyle = {
 }
 
 export default function FormBasic() {
+  const navigate = useNavigate();
+  const isLogin = localStorage.getItem('token') !== null
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [predictData, setPredictData] = useState(0)
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    if (isLogin) {
+      navigate('/predict/doctor')
+    } else {
+      navigate('/login')
+    }
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   function createrange(range) {
     let arr = [];
     for (let i = 0; i <= range; i++) {
@@ -26,6 +49,8 @@ export default function FormBasic() {
       .post("/predict", formData)
       .then((res) => {
         if (res.data.status === 200) {
+          showModal()
+          setPredictData(res.data.data)
           console.log(res.data.data)
         }
       })
@@ -37,7 +62,12 @@ export default function FormBasic() {
   return (
     <div className="container">
       <h1 className="form_intro">PHIẾU ĐIỀN PHỎNG VẤN</h1>
-      <div style={{paddingBottom: '120px'}}>
+      <div style={{ paddingBottom: '120px' }}>
+        <Modal title="Kết quả dự đoán nhanh" visible={isModalVisible} onOk={handleOk} okText={!isLogin ? "Đăng nhập" : "Dự đoán chi tiết"} onCancel={handleCancel} cancelText={"Đóng"}>
+          <p>Với những thông tin mà bạn đã nhập</p>
+          <p>Máy tính dự đoán bạn có {predictData}% khả năng có bệnh về tim mạch</p>
+          {!isLogin ? <p>Đăng nhập ngay để sử dụng form dự đoán chi tiết hơn!</p> : <p>Bạn có muốn sử dụng form dự đoán chi tiết hơn?</p>}
+        </Modal>
         <Form layout="vertical" className="form" onFinish={handleSubmit}>
           <Form.Item
             name={'BMI'}
