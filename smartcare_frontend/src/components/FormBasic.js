@@ -37,7 +37,7 @@ export default function FormBasic() {
   return (
     <div className="container">
       <h1 className="form_intro">PHIẾU ĐIỀN PHỎNG VẤN</h1>
-      <div>
+      <div style={{paddingBottom: '120px'}}>
         <Form layout="vertical" className="form" onFinish={handleSubmit}>
           <Form.Item
             name={'BMI'}
