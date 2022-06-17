@@ -15,9 +15,9 @@ accuracy = 0.0
 
 def PrepareDataset(dataset, isForDoctor):
     if isForDoctor:
-        X = dataset.iloc[:, 0:12].values
+        X = dataset.iloc[:, 0:13].values
         # print(np.shape(X))
-        y = dataset.iloc[:, 12].values
+        y = dataset.iloc[:, 13].values
         # print(y)
         return X, y
     else:
@@ -86,7 +86,7 @@ def makePrediction(model_link, features, isForDoctor):
     model = pickle.load(open(model_link, 'rb'))
 
     if isForDoctor:
-        features = np.reshape(features, (-1, 12))
+        features = np.reshape(features, (-1, 13))
     else:
         features = np.reshape(features, (-1, 17))
 
