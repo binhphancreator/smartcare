@@ -36,7 +36,7 @@ def cancerPredictDoctor():
                     doctorFeatures.append(int(request.form[i]))
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN_DOCTOR.sav", doctorFeatures, True)
-    return respondSuccess(data=str(result), status=200)
+    return respondSuccess(data=str(result[0]), status=200)
 
 
 @api.route('/predict', methods=['POST'])
@@ -62,6 +62,7 @@ def cancerPredictBasic(user):
         "KidneyDisease",
         "SkinCancer"
     ]
+
     for i in fields:
         if request.form[i] == None:
             return respondError("Missing field " + i, message="Missing field " + i, status=401)
@@ -71,10 +72,11 @@ def cancerPredictBasic(user):
             else:
                 features.append(int(request.form[i]))
 
+    userId = str(user['id'])
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN.sav", features, False)
     prediction = Prediction(
-        userId=user['id'],
+        userId=userId,
         BMI=request.form["BMI"],
         Smoking=request.form["Smoking"],
         AlcoholDrinking=request.form["AlcoholDrinking"],
@@ -92,10 +94,10 @@ def cancerPredictBasic(user):
         Asthma=request.form["Asthma"],
         KidneyDisease=request.form["KidneyDisease"],
         SkinCancer=request.form["SkinCancer"],
-        HeartDisease=float(result)
+        HeartDisease=str(result[1] * 100)
     )
     prediction.save()
-    return respondSuccess(float(result[1]), status=200)
+    return respondSuccess(float(result[1] * 100), status=200)
 
 
 @api.route('/predict', methods=['GET'])
