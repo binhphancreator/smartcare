@@ -7,6 +7,7 @@ from app.middlewares.ouser import ouser
 from Model_Knn import Knn_model as knn
 from bin.config import base_path
 
+
 @api.route('/predict/doctor', methods=['POST'])
 def cancerPredictDoctor():
     doctorFeatures = []
@@ -34,12 +35,12 @@ def cancerPredictDoctor():
                 doctorFeatures.append(float(request.form[i]))
             else:
                 doctorFeatures.append(int(request.form[i]))
-    
-    doctorFeatures = [41,0,0,1,0,1,0,332,124,88,31.31,65,84]
+
+    doctorFeatures = [41, 0, 0, 1, 0, 1, 0, 332, 124, 88, 31.31, 65, 84]
 
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN_DOCTOR.sav", doctorFeatures, True)
-    return respondSuccess(data=str(result), status=200)
+    return respondSuccess(data=result[0], status=200)
 
 
 @api.route('/predict', methods=['POST'])
@@ -77,7 +78,7 @@ def cancerPredictBasic(user):
 
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN.sav", features, False)
-    
+
     if user != None:
         userId = str(user['id'])
         prediction = Prediction(
