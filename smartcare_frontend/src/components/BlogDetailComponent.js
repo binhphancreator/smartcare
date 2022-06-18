@@ -1,24 +1,26 @@
 import { Col, Row } from "antd";
-import api from "../assets/mock_api";
 
-export default function BlogDetailComponent({ id }) {
-  const imgSrc =
-    "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png";
+export default function BlogDetailComponent({ author, title, imageUrl, text, description }) {
+  const data = text.split('/n/n')
+
   return (
     <Row gutter={[16, 16]}>
-      {/* <Col span={24}>
-        <p>{title}</p>
-      </Col> */}
-      <Col span={12} offset={6}>
-        <img style={{ width: "100%", height: "auto" }} src={imgSrc} alt="" />
+      <Col span={24}>
+        <h2 style={{ fontWeight: 600 }}>{title}</h2>
+        {author ?
+          <p>Tác giả {author}</p>
+          : <></>
+        }
+        <p>{description}</p>
       </Col>
-      {api
-        .filter((item) => item.id === 1 || item.id === 2)
-        .map((item) => (
-          <Col span={24}>
-            <p>{item.content}</p>
-          </Col>
-        ))}
+      <Col span={16} offset={4}>
+        <img style={{ width: "100%", height: "auto" }} src={imageUrl} alt="" />
+      </Col>
+      {data.map((item, index) => (
+        <Col span={24} key={index}>
+          <p style={{ fontSize: 16 }}>{item}</p>
+        </Col>
+      ))}
     </Row>
   );
 }
