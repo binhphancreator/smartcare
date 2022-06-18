@@ -2,7 +2,6 @@ import { Col, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import BlogCard from "../components/Card/BlogCard";
 import DefaultLayout from "../layouts/DefaultLayout";
-import api_blog from "../assets/mock_api_blog";
 import axios from "../global/axios";
 
 export default function Blog() {

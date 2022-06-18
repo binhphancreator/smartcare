@@ -111,7 +111,7 @@ export default function FormBasic() {
               <p
                 style={textStyle}
               >
-                Bạn có thói quen uống rượt bia không?
+                Bạn có thói quen uống rượu bia không?
               </p>
             }
             className="form_select"
@@ -128,7 +128,7 @@ export default function FormBasic() {
               <p
                 style={textStyle}
               >
-                Bạn đã bao giờ bị ngất? (đột quỵ)?
+                Bạn đã bao giờ bị ngất?
               </p>
             }
             className="form_select"
@@ -353,9 +353,21 @@ export default function FormBasic() {
             className="form_select"
           >
             <Select>
-              {createrange(4).map((item, key) => {
-                return <Select.Option key={item} value={item}>{item} </Select.Option>;
-              })}
+              <Select.Option value={0} className="form_select_chirlden">
+                Kém
+              </Select.Option>
+              <Select.Option value={1} className="form_select_chirlden">
+                Bình thường
+              </Select.Option>
+              <Select.Option value={2} className="form_select_chirlden">
+                Khỏe
+              </Select.Option>
+              <Select.Option value={3} className="form_select_chirlden">
+                Tốt
+              </Select.Option>
+              <Select.Option value={4} className="form_select_chirlden">
+                Rất tốt
+              </Select.Option>
             </Select>
           </Form.Item>
           <Form.Item

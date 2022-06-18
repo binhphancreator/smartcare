@@ -8,6 +8,7 @@ import BlogDetail from "./pages/BlogDetail";
 import Register from "./pages/Register";
 import Basic from "./pages/Basic";
 import Doctor from "./pages/Doctor";
+import History from "./pages/History";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/basic" element={<Basic />} />
         <Route path="/doctor" element={<Doctor />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/history" element={<History />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

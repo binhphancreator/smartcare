@@ -1,6 +1,7 @@
-import React from "react";
-import { Button, Form, InputNumber, Radio } from "antd";
+import React, { useState } from "react";
+import { Button, Form, InputNumber, Modal, Radio } from "antd";
 import axios from "../global/axios";
+import { useNavigate } from "react-router-dom";
 
 const textStyle = {
   fontSize: "16px",
@@ -10,6 +11,23 @@ const textStyle = {
 }
 
 export default function FormDoctor() {
+  const navigate = useNavigate();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [predictData, setPredictData] = useState(0)
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    navigate('/')
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   function handleSubmit(data) {
     var formData = new FormData();
     for (let name in data) formData.append(name, data[name]);
@@ -18,7 +36,8 @@ export default function FormDoctor() {
       .post("/predict/doctor", formData)
       .then((res) => {
         if (res.data.status === 200) {
-          console.log(res.data.data)
+          showModal()
+          setPredictData(res.data.data)
         }
       })
       .catch((error) => {
@@ -31,7 +50,10 @@ export default function FormDoctor() {
       <h1 className="form_intro">PHIẾU ĐIỀN CỦA BÁC SĨ</h1>
       <div>
         <Form layout="vertical" className="form" onFinish={handleSubmit}>
-
+          <Modal title="Kết quả dự đoán của bác sĩ" visible={isModalVisible} onOk={handleOk} okText={"Trở về trang chủ"} onCancel={handleCancel} cancelText={"Đóng"}>
+            <p>Với những thông tin mà bạn đã nhập</p>
+            <p>Máy tính dự đoán bạn có {predictData}% khả năng có bệnh về tim mạch</p>
+          </Modal>
           <Form.Item
             name={'age'}
             rules={[{ required: true, message: 'Hãy vào trường thông tin dưới!' }]}

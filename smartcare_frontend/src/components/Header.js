@@ -23,8 +23,19 @@ export default function Header() {
             <Link to="/blog">Tin tức</Link>
           </li>
           <li>
-            <Link to="/doctor">Dự đoán</Link>
+            <Link to="/basic">Dự đoán nhanh</Link>
           </li>
+          {isLogin ?
+            <>
+              <li>
+                <Link to="/doctor">Dự đoán chuyên sâu</Link>
+              </li>
+              <li>
+                <Link to="/history">Lịch sử dự đoán</Link>
+              </li>
+            </>
+            : <></>
+          }
         </ul>
       </div>
 
