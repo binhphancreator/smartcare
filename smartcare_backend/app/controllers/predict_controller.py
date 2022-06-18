@@ -13,7 +13,7 @@ def cancerPredictDoctor():
     doctorFields = [
         "age",
         "currentSmoker",
-        "cigsPerDay,"
+        "cigsPerDay",
         "BPMeds",
         "prevalentStroke",
         "prevalentHyp",
@@ -25,15 +25,21 @@ def cancerPredictDoctor():
         "heartRate",
         "glucose"
     ]
+
     for i in doctorFields:
         if request.form[i] == None:
             return respondError("Missing field " + i, message="Missing field " + i, status=401)
         else:
-            doctorFeatures.append(float(request.form[i]))
-            
+            if i == "BMI":
+                doctorFeatures.append(float(request.form[i]))
+            else:
+                doctorFeatures.append(int(request.form[i]))
+    
+    doctorFeatures = [41,0,0,1,0,1,0,332,124,88,31.31,65,84]
+
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN_DOCTOR.sav", doctorFeatures, True)
-    return respondSuccess(data=str(result[0]), status=200)
+    return respondSuccess(data=str(result), status=200)
 
 
 @api.route('/predict', methods=['POST'])

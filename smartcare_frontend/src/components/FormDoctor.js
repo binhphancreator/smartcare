@@ -31,7 +31,7 @@ export default function FormDoctor() {
       <h1 className="form_intro">PHIẾU ĐIỀN CỦA BÁC SĨ</h1>
       <div>
         <Form layout="vertical" className="form" onFinish={handleSubmit}>
-          
+
           <Form.Item
             name={'age'}
             rules={[{ required: true, message: 'Hãy vào trường thông tin dưới!' }]}
@@ -62,7 +62,7 @@ export default function FormDoctor() {
             }
             className="form_select"
           >
-          <Radio.Group className="form_select_chirlden">
+            <Radio.Group className="form_select_chirlden">
               <Radio value={1}> Có </Radio>
               <Radio value={0}> Không </Radio>
             </Radio.Group>
@@ -211,7 +211,7 @@ export default function FormDoctor() {
               className="form_select_chirlden"
             ></InputNumber>
           </Form.Item>
-          
+
           <Form.Item
             name={'BMI'}
             rules={[{ required: true, message: 'Điền vào trường thông tin bên dưới!' }]}
@@ -247,7 +247,23 @@ export default function FormDoctor() {
               className="form_select_chirlden"
             ></InputNumber>
           </Form.Item>
-
+          <Form.Item
+            name={'glucose'}
+            rules={[{ required: true, message: 'Điền vào trường thông tin bên dưới!' }]}
+            label={
+              <p
+                style={textStyle}
+              >
+                Chỉ số đường huyết
+              </p>
+            }
+            className="form_select"
+          >
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
+          </Form.Item>
           <Button
             htmlType="submit"
             type="primary"
