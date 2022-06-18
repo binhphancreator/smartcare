@@ -31,9 +31,10 @@ export default function FormDoctor() {
       <h1 className="form_intro">PHIẾU ĐIỀN CỦA BÁC SĨ</h1>
       <div>
         <Form layout="vertical" className="form" onFinish={handleSubmit}>
+          
           <Form.Item
             name={'age'}
-            rules={[{ required: true, message: 'Hãy chọn BMI của bạn!' }]}
+            rules={[{ required: true, message: 'Hãy vào trường thông tin dưới!' }]}
             label={
               <p
                 style={textStyle}
@@ -50,30 +51,31 @@ export default function FormDoctor() {
           </Form.Item>
 
           <Form.Item
-            name={'anaemia'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
+            name={'currentSmoker'}
+            rules={[{ required: true, message: 'Hãy chọn một câu trả lời!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Giảm hồng cầu hoặc hemoglobin
+                Bệnh nhân có hút thuốc lá hay không?
               </p>
             }
             className="form_select"
           >
-            <Radio.Group className="form_select_chirlden">
+          <Radio.Group className="form_select_chirlden">
               <Radio value={1}> Có </Radio>
               <Radio value={0}> Không </Radio>
             </Radio.Group>
           </Form.Item>
+
           <Form.Item
-            name={'creatinine_phosphokinase'}
-            rules={[{ required: true, message: 'Hãy nhập chỉ số' }]}
+            name={'cigsPerDay'}
+            rules={[{ required: true, message: 'Hãy nhập số lượng!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Mức độ của enzym CPK trong máu (mcg / L)
+                Số lượng thuốc lá bệnh nhân tiêu thụ (điếu/ngày)
               </p>
             }
             className="form_select"
@@ -83,14 +85,15 @@ export default function FormDoctor() {
               className="form_select_chirlden"
             ></InputNumber>
           </Form.Item>
+
           <Form.Item
-            name={'diabetes'}
+            name={'BPMeds'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Bệnh nhân có bị tiểu đường hay không
+                Bệnh nhân có dùng thuốc điều trị bệnh huyết áp?
               </p>
             }
             className="form_select"
@@ -102,24 +105,25 @@ export default function FormDoctor() {
           </Form.Item>
 
           <Form.Item
-            name={'ejection_fraction'}
+            name={'prevalentStroke'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Phần trăm máu rời khỏi tim mỗi lần co bóp (%)
+                Bệnh nhân có từng bị đột quỵ?
               </p>
             }
             className="form_select"
           >
-            <InputNumber
-              style={{ width: "100%" }}
-              className="form_select_chirlden"
-            ></InputNumber>
+            <Radio.Group className="form_select_chirlden">
+              <Radio value={1}> Có </Radio>
+              <Radio value={0}> Không </Radio>
+            </Radio.Group>
           </Form.Item>
+
           <Form.Item
-            name={'high_blood_pressure'}
+            name={'prevalentHyp'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
@@ -135,82 +139,15 @@ export default function FormDoctor() {
               <Radio value={0}> Không </Radio>
             </Radio.Group>
           </Form.Item>
+
           <Form.Item
-            name={'platelets'}
+            name={'diabetes'}
             rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Số lượng tiểu cầu trong máu (kiloplatelets/mL)
-              </p>
-            }
-            className="form_select"
-          >
-            <InputNumber
-              style={{ width: "100%" }}
-              className="form_select_chirlden"
-            ></InputNumber>
-          </Form.Item>
-          <Form.Item
-            name={'serum_creatinine'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Mức độ creatinine huyết thanh trong máu (mg/dl)
-              </p>
-            }
-            className="form_select"
-          >
-            <InputNumber
-              style={{ width: "100%" }}
-              className="form_select_chirlden"
-            ></InputNumber>
-          </Form.Item>
-          <Form.Item
-            name={'serum_sodium'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Mức natri huyết thanh trong máu (mEq / L)
-              </p>
-            }
-            className="form_select"
-          >
-            <InputNumber
-              style={{ width: "100%" }}
-              className="form_select_chirlden"
-            ></InputNumber>
-          </Form.Item>
-          <Form.Item
-            name={'sex'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Giới tính người bệnh
-              </p>
-            }
-            className="form_select"
-          >
-            <Radio.Group className="form_select_chirlden">
-              <Radio value={1}> Nam </Radio>
-              <Radio value={0}> Nữ </Radio>
-            </Radio.Group>
-          </Form.Item>
-          <Form.Item
-            name={'smoking'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
-            label={
-              <p
-                style={textStyle}
-              >
-                Người bệnh có hút thuốc?
+                Bệnh nhân có mắc chứng tiểu đường?
               </p>
             }
             className="form_select"
@@ -220,14 +157,87 @@ export default function FormDoctor() {
               <Radio value={0}> Không </Radio>
             </Radio.Group>
           </Form.Item>
+
           <Form.Item
-            name={'time'}
-            rules={[{ required: true, message: 'Hãy chọn một đáp án!' }]}
+            name={'totChol'}
+            rules={[{ required: true, message: 'Điền số liệu vào trường thông tin!' }]}
             label={
               <p
                 style={textStyle}
               >
-                Số lần xét nghiệm
+                Lượng cholesterol trong máu (mg/dl)
+              </p>
+            }
+            className="form_select"
+          >
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
+          </Form.Item>
+
+          <Form.Item
+            name={'sysBP'}
+            rules={[{ required: true, message: 'Điền số liệu vào trường thông tin!' }]}
+            label={
+              <p
+                style={textStyle}
+              >
+                Huyết áp người bệnh (mmHg)
+              </p>
+            }
+            className="form_select"
+          >
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
+          </Form.Item>
+
+          <Form.Item
+            name={'diaBP'}
+            rules={[{ required: true, message: 'Điền vào trường thông tin bên dưới!' }]}
+            label={
+              <p
+                style={textStyle}
+              >
+                Huyết áp tâm trương (mmHg)
+              </p>
+            }
+            className="form_select"
+          >
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
+          </Form.Item>
+          
+          <Form.Item
+            name={'BMI'}
+            rules={[{ required: true, message: 'Điền vào trường thông tin bên dưới!' }]}
+            label={
+              <p
+                style={textStyle}
+              >
+                Chỉ số BMI
+              </p>
+            }
+            className="form_select"
+          >
+            <InputNumber
+              style={{ width: "100%" }}
+              className="form_select_chirlden"
+            ></InputNumber>
+          </Form.Item>
+
+          <Form.Item
+            name={'heartRate'}
+            rules={[{ required: true, message: 'Điền vào trường thông tin bên dưới!' }]}
+            label={
+              <p
+                style={textStyle}
+              >
+                Nhịp tim (nhịp/phút)
               </p>
             }
             className="form_select"
