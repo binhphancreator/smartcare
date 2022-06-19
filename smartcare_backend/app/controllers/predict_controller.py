@@ -35,8 +35,6 @@ def cancerPredictDoctor():
             else:
                 doctorFeatures.append(int(request.form[i]))
 
-    doctorFeatures = [41, 0, 0, 1, 0, 1, 0, 332, 124, 88, 31.31, 65, 84]
-
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN_DOCTOR.sav", doctorFeatures, True)
     return respondSuccess(data=float(result[0] * 100), status=200)

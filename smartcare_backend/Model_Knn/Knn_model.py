@@ -7,6 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix, accuracy_score
 import pickle
+from bin.config import base_path
 
 
 confusionMatrix = [[0.0, 0.0], [0.0, 0.0]]
@@ -81,14 +82,31 @@ def getAccuracy():
 
 def makePrediction(model_link, features, isForDoctor):
 
-    print(model_link, features)
-
-    model = pickle.load(open(model_link, 'rb'))
+    # Splitting the dataset into the Training set and Test set
+    datasetDoctor = pd.read_csv(base_path + '/Model_Knn/Dataset/heart_doctor_cleaned_data_new.csv')
 
     if isForDoctor:
         features = np.reshape(features, (-1, 13))
     else:
         features = np.reshape(features, (-1, 17))
+
+    if isForDoctor :
+        dataset = datasetDoctor
+        X, y = PrepareDataset(dataset, isForDoctor)
+
+        # Splitting the dataset into the Training set and Test set
+        X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.20, random_state=0)
+        
+        # Feature Scaling
+        sc = StandardScaler()
+        X_train = sc.fit_transform(X_train)
+        
+        features = sc.transform(features)
+
+    print(model_link, features)
+
+    model = pickle.load(open(model_link, 'rb'))
 
     print("feature reshaped ", features)
     result = model.predict_proba(features)

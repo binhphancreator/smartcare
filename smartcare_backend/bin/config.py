@@ -3,7 +3,7 @@ import os
 
 bin_path = os.path.dirname(__file__)
 base_path = os.path.dirname(bin_path)
-env_path = "/.env"
+env_path = "../.env"
 logs_path = "/logs/flask"
 load_dotenv(env_path)
 
@@ -18,10 +18,10 @@ from flask_mongoengine import MongoEngine
 
 app.config['MONGODB_SETTINGS'] = {
   "db": os.getenv("MONGO_DB"),
-  'host': os.getenv("MONGO_HOST", "mongo"),
+  'host': os.getenv("MONGO_HOST", "localhost"),
   "port": os.getenv("MONGO_PORT", 27017),
-  "username": os.getenv("MONGO_USER", "smartcare"),
-  "password": os.getenv("MONGO_PASSWORD", "smartcare"),
+  # "username": os.getenv("MONGO_USER", "smartcare"),
+  # "password": os.getenv("MONGO_PASSWORD", "smartcare"),
 }
 
 db = MongoEngine(app)
