@@ -35,11 +35,11 @@ def cancerPredictDoctor():
             else:
                 doctorFeatures.append(int(request.form[i]))
 
-    doctorFeatures = [41, 0, 0, 1, 0, 1, 0, 332, 124, 88, 31.31, 65, 84]
+    # doctorFeatures = [0.30,0,0,1,0,1,0,0.32,0.34,0.68,0.41,0.75,0.64]
 
     result = knn.makePrediction(
         base_path + "/Model_Knn/MODEL_KNN_DOCTOR.sav", doctorFeatures, True)
-    return respondSuccess(data=float(result[0] * 100), status=200)
+    return respondSuccess(data=float(result[1] * 100), status=200)
 
 @api.route('/predict', methods=['POST'])
 @ouser

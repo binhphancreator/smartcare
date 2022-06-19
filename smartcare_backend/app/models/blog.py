@@ -1,7 +1,6 @@
 import mongoengine
 import datetime
 
-
 class Blog(mongoengine.Document):
     title = mongoengine.StringField(required=True, max_length=255)
     author = mongoengine.StringField(required=True, max_length=255)
