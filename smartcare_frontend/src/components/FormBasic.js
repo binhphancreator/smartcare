@@ -22,7 +22,7 @@ export default function FormBasic() {
 
   const handleOk = () => {
     if (isLogin) {
-      navigate('/predict/doctor')
+      navigate('/doctor')
     } else {
       navigate('/login')
     }
